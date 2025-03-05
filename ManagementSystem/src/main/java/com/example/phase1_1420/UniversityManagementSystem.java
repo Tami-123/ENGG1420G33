@@ -6,8 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * University Management System - Phase 1
- */
+ * University Management System
+ * */
 public class UniversityManagementSystem extends Application {
 
     private Stage primaryStage;
