@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * User Database that handles authentication and user role management.
+ * User Database that handles authentication and user role management (admin, or user / student).
  */
 public class UserDatabase {
 
