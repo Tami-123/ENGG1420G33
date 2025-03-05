@@ -1,13 +1,8 @@
-module com.example.managementsystem {
+module com.example.phase1_1420 {
     requires javafx.controls;
     requires javafx.fxml;
 
-    requires org.controlsfx.controls;
-    requires org.kordamp.bootstrapfx.core;
-    requires org.apache.poi.ooxml;
-    requires java.logging;
-    requires org.apache.commons.io;
 
-    opens com.example.managementsystem to javafx.fxml;
-    exports com.example.managementsystem;
+    opens com.example.phase1_1420 to javafx.fxml;
+    exports com.example.phase1_1420;
 }
