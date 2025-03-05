@@ -15,7 +15,7 @@ public class UniversityManagementSystem extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        SceneController.showLoginScreen(primaryStage); // Load login screen at startup
+        SceneController.showLoginScreen(primaryStage); // Load login screen at the startup
     }
 
     public static void main(String[] args) {

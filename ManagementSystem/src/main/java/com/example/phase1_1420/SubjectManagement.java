@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Handles Subject Management functionality for Admin and User views.
+ * Handles Subject Management functionality for both the Admin and User views.
  */
 public class SubjectManagement {
     public static void show() { showModule("Subject Management - Admin View"); }
