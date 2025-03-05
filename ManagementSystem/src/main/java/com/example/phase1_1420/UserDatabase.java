@@ -21,7 +21,7 @@ public class UserDatabase {
     }
 
     /**
-     * Authenticates the user based on provided username and password.
+     * Authenticates the user based on the provided username and password.
      * @param username The entered username.
      * @param password The entered password.
      * @return The role of the user if authentication is successful, otherwise null.
