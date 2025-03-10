@@ -10,9 +10,7 @@
 <AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.UserDashboardController">
 
     <!-- Main Content Area (Fixed, Never Moves) -->
-    <StackPane fx:id="contentArea" prefHeight="600" prefWidth="800" style="-fx-background-color: #ecf0f1;">
-        <Button text="Welcome! Click ≡ to Close Menu" />
-    </StackPane>
+    <StackPane fx:id="contentArea" prefHeight="600" prefWidth="800" style="-fx-background-color: #ecf0f1;" />
 
     <!-- Sidebar (Starts Open) -->
     <Pane fx:id="sidebarPane" layoutX="0" prefHeight="600" prefWidth="200" style="-fx-background-color: #ed7411;">
