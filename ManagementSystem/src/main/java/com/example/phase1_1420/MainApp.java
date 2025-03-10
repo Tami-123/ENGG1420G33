@@ -10,12 +10,12 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 300, 200);
+        Scene scene = new Scene(fxmlLoader.load());
 
 
         primaryStage.setTitle("Login Page");
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false); // Prevent window resizing
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

@@ -33,6 +33,7 @@
          <Cursor fx:constant="DEFAULT" />
       </cursor>
    </ImageView>
+   <Label fx:id="errorLabel" textFill="RED" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
    <columnConstraints>
       <ColumnConstraints maxWidth="102.5" minWidth="63.5" prefWidth="66.5" />
       <ColumnConstraints maxWidth="155.5" minWidth="116.5" prefWidth="152.5" />
@@ -42,5 +43,6 @@
       <RowConstraints maxHeight="56.0" minHeight="0.0" prefHeight="27.0" />
       <RowConstraints />
       <RowConstraints />
+      <RowConstraints minHeight="10.0" prefHeight="10.0" />
    </rowConstraints>
 </GridPane>

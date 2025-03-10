@@ -1,62 +1,65 @@
 package com.example.phase1_1420;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import java.io.IOException;
 
 public class AdminDashboardController {
     @FXML private Pane sidebarPane;
-    @FXML private VBox sidebar;
     @FXML private Button toggleButton;
     @FXML private StackPane contentArea;
-    private boolean sidebarVisible = true;
+    private boolean sidebarVisible = false;
 
     @FXML
-    private void toggleSidebar() {
-        Stage stage = (Stage) toggleButton.getScene().getWindow(); // Get the window
+    private void initialize() {
 
-        if (!sidebarVisible) {
-            // Show Sidebar
-            sidebarPane.setVisible(true);
-            sidebarPane.setManaged(true);
-            sidebarPane.setPrefWidth(200);
-            contentArea.setLayoutX(200);
-            toggleButton.setText("☰");
-            sidebarVisible = true;
-        } else {
-            // Hide Sidebar
-            sidebarPane.setVisible(false);
-            sidebarPane.setManaged(false);
-            sidebarPane.setPrefWidth(0);
-            contentArea.setLayoutX(10);
-            toggleButton.setText("≡");
-            sidebarVisible = false;
-        }
-
-        // **Prevent Window from Shrinking**
-        stage.sizeToScene(); // Recalculate size without shrinking window
+        sidebarPane.setTranslateX(-200);
+        toggleButton.setText("☰");
+        loadContent("admin-dashboard-view.fxml");
     }
 
     @FXML
-    private void handleSubjects() { loadContent("subjects-view.fxml"); }
+    private void toggleSidebar() {
+
+        TranslateTransition slide = new TranslateTransition(Duration.millis(300), sidebarPane);
+
+        if (sidebarVisible) {
+            slide.setToX(-200);
+            toggleButton.setText("☰");
+            sidebarVisible = false;
+        } else {
+            slide.setToX(0);
+            toggleButton.setText("≡");
+            sidebarVisible = true;
+        }
+
+        slide.play();
+    }
 
     @FXML
-    private void handleCourses() { loadContent("courses-view.fxml"); }
+    private void handleDashboard() { loadContent("admin-dashboard-view.fxml"); }
 
     @FXML
-    private void handleStudents() { loadContent("students-view.fxml"); }
+    private void handleSubjects() { loadContent("admin-subjects-view.fxml"); }
 
     @FXML
-    private void handleFaculty() { loadContent("faculty-view.fxml"); }
+    private void handleCourses() { loadContent("admin-courses-view.fxml"); }
 
     @FXML
-    private void handleEvents() { loadContent("events-view.fxml"); }
+    private void handleStudents() { loadContent("admin-students-view.fxml"); }
+
+    @FXML
+    private void handleFaculty() { loadContent("admin-faculty-view.fxml"); }
+
+    @FXML
+    private void handleEvents() { loadContent("admin-events-view.fxml"); }
 
     @FXML
     private void handleLogout() {
@@ -64,7 +67,7 @@ public class AdminDashboardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/phase1_1420/login-view.fxml"));
             Scene scene = new Scene(loader.load());
 
-            Stage stage = (Stage) sidebar.getScene().getWindow();
+            Stage stage = (Stage) sidebarPane.getScene().getWindow();
             stage.setScene(scene);
             stage.setTitle("Login Page");
         } catch (IOException e) {

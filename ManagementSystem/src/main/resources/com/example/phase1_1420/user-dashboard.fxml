@@ -7,25 +7,30 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.UserDashboardController">
+<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.UserDashboardController">
 
-    <!-- Sidebar inside a Pane -->
-    <Pane fx:id="sidebarPane" prefHeight="600" prefWidth="200" AnchorPane.leftAnchor="0">
-        <VBox fx:id="sidebar" prefHeight="600.0" prefWidth="200" spacing="10" style="-fx-background-color: #34495e;">
-            <Button onAction="#handleDashboard" text="Dashboard" />
-            <Button onAction="#handleCourses" text="View Courses" />
-            <Button onAction="#handleEvents" text="View Register Events" />
-            <Button onAction="#handleProfile" text="Profile Management" />
-            <Button onAction="#handleLogout" style="-fx-background-color: red; -fx-text-fill: white;" text="Logout" />
+    <!-- Main Content Area (Fixed, Never Moves) -->
+    <StackPane fx:id="contentArea" prefHeight="600" prefWidth="800" style="-fx-background-color: #ecf0f1;">
+        <Button text="Welcome! Click ≡ to Close Menu" />
+    </StackPane>
+
+    <!-- Sidebar (Starts Open) -->
+    <Pane fx:id="sidebarPane" layoutX="0" prefHeight="600" prefWidth="200" style="-fx-background-color: #ed7411;">
+        <VBox fx:id="sidebar" alignment="TOP_CENTER" prefHeight="600" prefWidth="200" spacing="10">
+            <Button alignment="CENTER" onAction="#handleDashboard" text="Home" />
+            <Button alignment="CENTER" onAction="#handleCourses" text="View Courses" />
+            <Button alignment="CENTER" onAction="#handleEvents" text="View  Register Events" />
+            <Button alignment="CENTER" onAction="#handleProfile" text="Profile Management" />
+            <Button alignment="CENTER" onAction="#handleLogout" style="-fx-background-color: red; -fx-text-fill: white;" text="Logout" />
             <padding>
                 <Insets top="100.0" />
             </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
         </VBox>
     </Pane>
 
-    <!-- Main Content Area -->
-    <StackPane fx:id="contentArea" layoutX="200" prefHeight="600" prefWidth="600" />
-
-    <!-- Toggle Button -->
-    <Button fx:id="toggleButton" layoutX="10" layoutY="10" onAction="#toggleSidebar" text="☰" AnchorPane.topAnchor="10" />
+    <!-- Toggle Button (Always Visible) -->
+    <Button fx:id="toggleButton" layoutX="10" layoutY="10" onAction="#toggleSidebar" text="≡" />
 </AnchorPane>

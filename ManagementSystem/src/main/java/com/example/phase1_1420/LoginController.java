@@ -24,6 +24,7 @@ public class LoginController {
             loadDashboard(role);
         } else {
             errorLabel.setText("Invalid Login!");
+            errorLabel.setStyle("-fx-text-fill: red;");
         }
     }
 
