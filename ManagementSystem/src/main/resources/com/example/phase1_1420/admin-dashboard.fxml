@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.AdminDashboardController">
+
+    <!-- Sidebar inside a Pane -->
+    <Pane fx:id="sidebarPane" prefHeight="600" prefWidth="200" AnchorPane.leftAnchor="0">
+        <VBox fx:id="sidebar" prefHeight="600.0" prefWidth="200" spacing="10" style="-fx-background-color: #2c3e50;">
+            <Button onAction="#handleSubjects" text="Subjects Management" />
+            <Button onAction="#handleCourses" text="Course Management" />
+            <Button onAction="#handleStudents" text="Student Management" />
+            <Button onAction="#handleFaculty" text="Faculty Management" />
+            <Button onAction="#handleEvents" text="Event Management" />
+            <Button onAction="#handleLogout" style="-fx-background-color: red; -fx-text-fill: white;" text="Logout" />
+         <padding>
+            <Insets top="100.0" />
+         </padding>
+        </VBox>
+    </Pane>
+
+    <!-- Main Content Area -->
+    <StackPane fx:id="contentArea" layoutX="200" prefHeight="600" prefWidth="600">
+      <children>
+         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
+            <image>
+               <Image url="@img/UOFGLogo.png" />
+            </image>
+         </ImageView>
+      </children></StackPane>
+
+    <!-- Toggle Button -->
+    <Button fx:id="toggleButton" layoutX="10" layoutY="10" onAction="#toggleSidebar" text="☰" AnchorPane.topAnchor="10" />
+</AnchorPane>
