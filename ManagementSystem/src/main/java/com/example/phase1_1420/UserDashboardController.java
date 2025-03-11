@@ -69,7 +69,7 @@ public class UserDashboardController {
 
     private void loadContent(String fxmlFile) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/phase1_1420/" + fxmlFile));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             contentArea.getChildren().clear();
             contentArea.getChildren().add(loader.load());
         } catch (IOException e) {
