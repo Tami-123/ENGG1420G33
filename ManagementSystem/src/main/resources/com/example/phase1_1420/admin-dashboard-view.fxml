@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="adminPanel" prefHeight="600" prefWidth="800" style="-fx-background-color: #f4f4f4; -fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="adminPanel" prefHeight="600" prefWidth="800" style="-fx-background-color: #f4f4f4; -fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.AdminDashboardViewController">
 
    <!-- Use AnchorPane for Proper Layout -->
    <AnchorPane prefHeight="600" prefWidth="800">
@@ -22,7 +22,7 @@
          </ImageView>
 
          <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Welcome, Admin!" />
-         <Button fx:id="myButton" mnemonicParsing="false" text="Button" />
+         <Button fx:id="myButton" mnemonicParsing="false" onAction="#buttontest" text="Button" />
       </VBox>
    </AnchorPane>
 
