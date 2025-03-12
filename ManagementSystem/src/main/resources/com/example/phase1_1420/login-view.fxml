@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="CENTER" hgap="15.0" vgap="15.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.LoginController">
+<GridPane alignment="CENTER" hgap="15.0" vgap="15.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.LoginController">
 
     <padding>
         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
