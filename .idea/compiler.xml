@@ -6,10 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ENGG1420-Group33-Phase1" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ENGG1420-Group33-Phase1" target="23" />
-    </bytecodeTargetLevel>
   </component>
 </project>
