@@ -21,14 +21,14 @@ public class LoginController {
         String role = UserDatabase.authenticate(username, password);
 
         if (role != null) {
-            loadDashboard(role);
+            loadDashboard(role, userField.getText());
         } else {
             errorLabel.setText("Invalid Login!");
             errorLabel.setStyle("-fx-text-fill: red;");
         }
     }
 
-    private void loadDashboard(String role) {
+    private void loadDashboard(String role, String username) {
         try {
             String fxmlFile = "ADMIN".equals(role) ? "admin-dashboard.fxml" : "user-dashboard.fxml";
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/phase1_1420/" + fxmlFile));

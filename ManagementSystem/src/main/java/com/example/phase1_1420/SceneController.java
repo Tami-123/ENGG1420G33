@@ -44,7 +44,7 @@ public class SceneController {
 
             //Case if username or password is invalid
             if (role != null) {
-                showDashboard(primaryStage, role);
+                showDashboard(primaryStage, role, username);
             } else {
                 errorLabel.setText("Invalid Login!");
             }
@@ -60,10 +60,10 @@ public class SceneController {
     /**
      * Displays the dashboard based on the user's input (admin or user)
      */
-    public static void showDashboard(Stage primaryStage, String role) {
+    public static void showDashboard(Stage primaryStage, String role, String username) {
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
-        Label welcomeLabel = new Label("Welcome, " + role);
+        Label welcomeLabel = new Label("Welcome, " + UserDatabase.getDisplayName(username) + "!");
         Button logoutButton = new Button("Logout");
         layout.getChildren().addAll(welcomeLabel, logoutButton);
         logoutButton.setOnAction(e -> showLoginScreen(primaryStage));
@@ -80,7 +80,7 @@ public class SceneController {
         }
 
         // Case if user logs in as user (or student)
-        if (role.equals("USER")) {
+        if (role.equals("USER") || role.equals("Alice") || role.equals("Bob") || role.equals("Carol") || role.equals("Lucka") || role.equals("David") || role.equals("Emily") || role.equals("George") || role.equals("Helen") || role.equals("Isaac") || role.equals("Jennifer")) {
             layout.getChildren().addAll(
                     createModuleButton("Subjects Management", primaryStage, com.example.phase1_1420.Utilities.SubjectManagement::view),
                     createModuleButton("Course Management", primaryStage, com.example.phase1_1420.Utilities.CourseManagement::view),
