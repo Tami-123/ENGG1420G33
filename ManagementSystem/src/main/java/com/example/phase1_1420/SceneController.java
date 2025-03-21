@@ -80,7 +80,7 @@ public class SceneController {
         }
 
         // Case if user logs in as user (or student)
-        if (role.equals("USER") || role.equals("Alice") || role.equals("Bob") || role.equals("Carol") || role.equals("Lucka") || role.equals("David") || role.equals("Emily") || role.equals("George") || role.equals("Helen") || role.equals("Isaac") || role.equals("Jennifer")) {
+        if (role.equals("USER")) {
             layout.getChildren().addAll(
                     createModuleButton("Subjects Management", primaryStage, com.example.phase1_1420.Utilities.SubjectManagement::view),
                     createModuleButton("Course Management", primaryStage, com.example.phase1_1420.Utilities.CourseManagement::view),
