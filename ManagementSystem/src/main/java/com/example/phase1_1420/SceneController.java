@@ -21,8 +21,8 @@ public class SceneController {
         grid.setHgap(10);
         grid.setVgap(10);
 
-        // Display login screen where user enter credentials:
-        Label userLabel = new Label("Username:");
+        // Display login screen where user enters their credentials:
+        Label userLabel = new Label("Username / Email:");
         TextField userField = new TextField();
         Label passLabel = new Label("Password:");
         PasswordField passField = new PasswordField();
@@ -44,7 +44,7 @@ public class SceneController {
 
             //Case if username or password is invalid
             if (role != null) {
-                showDashboard(primaryStage, role);
+                showDashboard(primaryStage, role, username);
             } else {
                 errorLabel.setText("Invalid Login!");
             }
@@ -60,10 +60,10 @@ public class SceneController {
     /**
      * Displays the dashboard based on the user's input (admin or user)
      */
-    public static void showDashboard(Stage primaryStage, String role) {
+    public static void showDashboard(Stage primaryStage, String role, String username) {
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
-        Label welcomeLabel = new Label("Welcome, " + role);
+        Label welcomeLabel = new Label("Welcome, " + UserDatabase.getDisplayName(username) + "!");
         Button logoutButton = new Button("Logout");
         layout.getChildren().addAll(welcomeLabel, logoutButton);
         logoutButton.setOnAction(e -> showLoginScreen(primaryStage));
