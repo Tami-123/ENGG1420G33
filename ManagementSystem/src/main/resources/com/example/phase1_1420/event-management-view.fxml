@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.EventManagementController">
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+    <children>
+        <Label style="-fx-font-size: 20; -fx-font-weight: bold;" text="Event Management" />
+        <HBox spacing="10">
+            <children>
+                <TextField fx:id="eventNameField" promptText="Event Name" />
+                <DatePicker fx:id="eventDateField" promptText="Event Date" />
+                <Button fx:id="addButton" onAction="#handleAddEvent" text="Add" />
+                <Button fx:id="editButton" onAction="#handleEditEvent" text="Edit" />
+                <Button fx:id="deleteButton" onAction="#handleDeleteEvent" text="Delete" />
+            </children>
+        </HBox>
+        <TableView fx:id="eventTable">
+            <columns>
+                <TableColumn fx:id="eventNameColumn" text="Event Name" prefWidth="150" />
+                <TableColumn fx:id="eventDateColumn" text="Event Date" prefWidth="150" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>
