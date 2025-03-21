@@ -1,4 +1,4 @@
-package com.example.phase1_1420;
+package com.example.phase1_1420.Utilities;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

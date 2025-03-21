@@ -71,22 +71,22 @@ public class SceneController {
         // Case if user logs in as admin
         if (role.equals("ADMIN")) {
             layout.getChildren().addAll(
-                    createModuleButton("Subjects Management", primaryStage, SubjectManagement::show),
-                    createModuleButton("Course Management", primaryStage, CourseManagement::show),
-                    createModuleButton("Student Management", primaryStage, StudentManagement::show),
-                    createModuleButton("Faculty Management", primaryStage, FacultyManagement::show),
-                    createModuleButton("Event Management", primaryStage, EventManagement::show)
+                    createModuleButton("Subjects Management", primaryStage, com.example.phase1_1420.Utilities.SubjectManagement::show),
+                    createModuleButton("Course Management", primaryStage, com.example.phase1_1420.CourseManagement::show),
+                    createModuleButton("Student Management", primaryStage, com.example.phase1_1420.StudentManagement::show),
+                    createModuleButton("Faculty Management", primaryStage, com.example.phase1_1420.FacultyManagement::show),
+                    createModuleButton("Event Management", primaryStage, com.example.phase1_1420.EventManagement::show)
             );
         }
 
         // Case if user logs in as user (or student)
         if (role.equals("USER")) {
             layout.getChildren().addAll(
-                    createModuleButton("Subjects Management", primaryStage, SubjectManagement::view),
-                    createModuleButton("Course Management", primaryStage, CourseManagement::view),
-                    createModuleButton("Student Management", primaryStage, StudentManagement::view),
-                    createModuleButton("Faculty Management", primaryStage, FacultyManagement::view),
-                    createModuleButton("Event Management", primaryStage, EventManagement::view)
+                    createModuleButton("Subjects Management", primaryStage, com.example.phase1_1420.Utilities.SubjectManagement::view),
+                    createModuleButton("Course Management", primaryStage, com.example.phase1_1420.CourseManagement::view),
+                    createModuleButton("Student Management", primaryStage, com.example.phase1_1420.StudentManagement::view),
+                    createModuleButton("Faculty Management", primaryStage, com.example.phase1_1420.FacultyManagement::view),
+                    createModuleButton("Event Management", primaryStage, com.example.phase1_1420.EventManagement::view)
             );
         }
 

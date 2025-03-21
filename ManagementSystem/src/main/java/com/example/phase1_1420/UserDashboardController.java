@@ -3,6 +3,7 @@ package com.example.phase1_1420;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
@@ -48,6 +49,22 @@ public class UserDashboardController {
     private void handleCourses() { loadContent("user-courses-view.fxml"); }
 
     @FXML
+    private void handleSubjects() {
+        try {
+                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/phase1_1420/subject-management-view.fxml"));
+                 Parent root = loader.load();
+                 SubjectManagementController controller = loader.getController();
+                 controller.setAdminMode(false);
+                 contentArea.getChildren().clear();
+                 contentArea.getChildren().add(root);
+             } catch (Exception e) {
+                 e.printStackTrace();
+             }
+        }
+
+
+
+        @FXML
     private void handleEvents() { loadContent("user-events-view.fxml"); }
 
     @FXML

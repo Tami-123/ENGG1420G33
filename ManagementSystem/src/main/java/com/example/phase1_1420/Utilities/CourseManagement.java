@@ -1,4 +1,4 @@
-package com.example.phase1_1420;
+package com.example.phase1_1420.Utilities;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -7,14 +7,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Handles Student Management functionality for Admin and User views.
+ * Handles Course Management functionality for Admin and User views.
  */
-public class StudentManagement {
-    public static void show() { showModule("Student Management - Admin View"); }
-    public static void view() { showModule("Student Management - User View"); }
+public class CourseManagement {
+    public static void show() { showModule("Course Management - Admin View"); }
+    public static void view() { showModule("Course Management - User View"); }
 
     /**
-     * Displays the Student Management window.
+     * Displays the Course Management window.
      * @param title The title of the window, varying for Admin/User.
      */
     private static void showModule(String title) {

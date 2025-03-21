@@ -3,7 +3,9 @@ package com.example.phase1_1420;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -47,9 +49,22 @@ public class AdminDashboardController {
     private void handleDashboard() { loadContent("admin-dashboard-view.fxml"); }
 
     @FXML
-    private void handleSubjects() { loadContent("admin-subjects-view.fxml"); }
+    private void handleSubjects() {
+        try {
+                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/phase1_1420/subject-management-view.fxml"));
+                 Parent root = loader.load();
+                 SubjectManagementController controller = loader.getController();
+                 controller.setAdminMode(true);
+                 contentArea.getChildren().clear();
+                 contentArea.getChildren().add(root);
+             } catch (Exception e) {
+                 e.printStackTrace();
+             }
+        }
 
-    @FXML
+
+
+        @FXML
     private void handleCourses() { loadContent("admin-courses-view.fxml"); }
 
     @FXML
@@ -85,3 +100,4 @@ public class AdminDashboardController {
         }
     }
 }
+

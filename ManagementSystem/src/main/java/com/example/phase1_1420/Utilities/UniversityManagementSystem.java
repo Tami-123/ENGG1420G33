@@ -1,5 +1,6 @@
-package com.example.phase1_1420;
+package com.example.phase1_1420.Utilities;
 
+import com.example.phase1_1420.SceneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

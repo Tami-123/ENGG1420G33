@@ -1,4 +1,4 @@
-package com.example.phase1_1420;
+package com.example.phase1_1420.Utilities;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -7,14 +7,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Handles Subject Management functionality for both the Admin and User views.
+ * Handles Student Management functionality for Admin and User views.
  */
-public class SubjectManagement {
-    public static void show() { showModule("Subject Management - Admin View"); }
-    public static void view() { showModule("Subject Management - User View"); }
+public class StudentManagement {
+    public static void show() { showModule("Student Management - Admin View"); }
+    public static void view() { showModule("Student Management - User View"); }
 
     /**
-     * Displays the Subject Management window.
+     * Displays the Student Management window.
      * @param title The title of the window, varying for Admin/User.
      */
     private static void showModule(String title) {

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.SubjectManagementController">
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+    <children>
+        <Label style="-fx-font-size: 20; -fx-font-weight: bold;" text="Subject Management" />
+        <HBox spacing="10">
+            <children>
+                <TextField fx:id="subjectNameField" promptText="Subject Name" />
+                <TextField fx:id="subjectCodeField" promptText="Subject Code" />
+                <Button fx:id="addButton" onAction="#handleAddSubject" text="Add" />
+                <Button fx:id="editButton" onAction="#handleEditSubject" text="Edit" />
+                <Button fx:id="deleteButton" onAction="#handleDeleteSubject" text="Delete" />
+            </children>
+        </HBox>
+        <TableView fx:id="subjectTable">
+            <columns>
+                <TableColumn fx:id="subjectNameColumn" text="Subject Name" prefWidth="150" />
+                <TableColumn fx:id="subjectCodeColumn" text="Subject Code" prefWidth="150" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>

@@ -16,6 +16,7 @@
     <Pane fx:id="sidebarPane" layoutX="0" prefHeight="600" prefWidth="200" style="-fx-background-color: #ed7411;">
         <VBox fx:id="sidebar" alignment="TOP_CENTER" prefHeight="600" prefWidth="200" spacing="10">
             <Button alignment="CENTER" onAction="#handleDashboard" text="Home" />
+            <Button alignment="CENTER" onAction="#handleSubjects" text="View Subjects Available" />
             <Button alignment="CENTER" onAction="#handleCourses" text="View Courses" />
             <Button alignment="CENTER" onAction="#handleEvents" text="View  Register Events" />
             <Button alignment="CENTER" onAction="#handleProfile" text="Profile Management" />
