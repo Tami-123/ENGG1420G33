@@ -1,4 +1,4 @@
-package com.example.phase1_1420;
+package com.example.phase1_1420.Utilities;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
