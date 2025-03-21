@@ -21,7 +21,7 @@ public class SceneController {
         grid.setHgap(10);
         grid.setVgap(10);
 
-        // Display login screen where user enter credentials:
+        // Display login screen where user enters credentials:
         Label userLabel = new Label("Username / Email:");
         TextField userField = new TextField();
         Label passLabel = new Label("Password:");
