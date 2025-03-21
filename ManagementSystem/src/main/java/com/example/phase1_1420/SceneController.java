@@ -22,7 +22,7 @@ public class SceneController {
         grid.setVgap(10);
 
         // Display login screen where user enter credentials:
-        Label userLabel = new Label("Username:");
+        Label userLabel = new Label("Username / Email:");
         TextField userField = new TextField();
         Label passLabel = new Label("Password:");
         PasswordField passField = new PasswordField();
