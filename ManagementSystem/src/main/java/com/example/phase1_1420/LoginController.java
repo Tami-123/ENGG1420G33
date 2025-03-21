@@ -8,11 +8,15 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
-
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 public class LoginController {
     @FXML private TextField userField;
     @FXML private PasswordField passField;
     @FXML private Label errorLabel;
+
+    private int failedAttempts = 0;
+    private static final int MAX_ATTEMPTS = 5;
 
     @FXML
     private void handleLogin() {
@@ -21,14 +25,25 @@ public class LoginController {
         String role = UserDatabase.authenticate(username, password);
 
         if (role != null) {
-            loadDashboard(role);
+            failedAttempts = 0; // Reset on success
+            loadDashboard(role, username);
         } else {
-            errorLabel.setText("Invalid Login!");
+            failedAttempts++;
+            errorLabel.setText("Invalid Login! - (" + failedAttempts + "/" + MAX_ATTEMPTS + " Login Attempts Used)");
             errorLabel.setStyle("-fx-text-fill: red;");
+
+            if (failedAttempts >= MAX_ATTEMPTS) {
+                errorLabel.setText("Too many failed Login attempts! Please Try again later. Closing login screen.");
+
+
+                PauseTransition delay = new PauseTransition(Duration.seconds(5));
+                delay.setOnFinished(e -> System.exit(0));
+                delay.play();
+            }
         }
     }
 
-    private void loadDashboard(String role) {
+    private void loadDashboard(String role, String username) {
         try {
             String fxmlFile = "ADMIN".equals(role) ? "admin-dashboard.fxml" : "user-dashboard.fxml";
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/phase1_1420/" + fxmlFile));
