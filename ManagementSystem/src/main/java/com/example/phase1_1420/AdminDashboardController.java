@@ -74,7 +74,7 @@ public class AdminDashboardController {
     private void handleFaculty() { loadContent("admin-faculty-view.fxml"); }
 
     @FXML
-    private void handleEvents() { loadContent("admin-events-view.fxml"); }
+    private void handleEvents() { loadContent("event-management-view.fxml"); }
 
     @FXML
     private void handleLogout() {
