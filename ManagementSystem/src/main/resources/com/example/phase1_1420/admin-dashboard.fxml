@@ -2,12 +2,16 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.AdminDashboardController">
+<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.AdminDashboardController">
 
     <!-- Main Content Area (Fixed, Never Moves) -->
     <StackPane fx:id="contentArea" prefHeight="600" prefWidth="800" style="-fx-background-color: #ecf0f1;" />
@@ -22,8 +26,26 @@
             <Button onAction="#handleFaculty" text="Manage Faculty" />
             <Button onAction="#handleEvents" text="Manage Events" />
             <Button onAction="#handleLogout" style="-fx-background-color: red; -fx-text-fill: white;" text="Logout" />
+         <ImageView fx:id="UserImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@img/Default.jpg" />
+            </image>
+            <VBox.margin>
+               <Insets top="30.0" />
+            </VBox.margin>
+         </ImageView>
+         <Text fx:id="UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Text>
+         <Text fx:id="UserID" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="#######">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Text>
             <padding>
-                <Insets top="100.0" />
+                <Insets top="70.0" />
             </padding>
         </VBox>
     </Pane>
