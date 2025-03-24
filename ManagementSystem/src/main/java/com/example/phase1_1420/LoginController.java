@@ -19,9 +19,14 @@ public class LoginController {
     private static final int MAX_ATTEMPTS = 5;
 
     @FXML
-    private void handleLogin() {
+    private void handleLogin() throws IOException {
         String username = userField.getText();
         String password = passField.getText();
+
+        ReadingExcelFile a = new ReadingExcelFile();
+        a.ReadingNameExcelFile();
+
+
         String role = UserDatabase.authenticate(username, password);
 
         if (role != null) {
