@@ -8,55 +8,90 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ReadingExcelFile {
-    public ArrayList<String> studentNamesFromExcelFile = new ArrayList<>();
-    public ArrayList<String> studentPasswordFromExcelFile = new ArrayList<>();
-    public ArrayList<String> adminIDFromExcelFile = new ArrayList<>();
-    public ArrayList<String> adminPasswordFromExcelFile = new ArrayList<>();
+    public ArrayList<Student> studentList = new ArrayList<>();
+    public ArrayList<Faculty> facultyList = new ArrayList<>();
+    public ArrayList<Event> eventList = new ArrayList<>();
 
     public void ReadingNameExcelFile() throws IOException {
-        File file = new File("com/example/phase1_1420/UMS_Data.xlsx");
+        File file = new File("UMS_Data.xlsx");
         FileInputStream fis = new FileInputStream(file);
         Workbook wb = WorkbookFactory.create(fis);
 
-        // Finding Student Names (Column 0 in Sheet 2)
+
+        // Finding Students In sheet 2
         Sheet sheet = wb.getSheetAt(2);
-        studentNamesFromExcelFile.clear();
-        for (Row row : sheet) {
-            Cell cell = row.getCell(0);
-            if (cell != null) {
-                studentNamesFromExcelFile.add(cell.toString());
+        studentList.clear();
+        for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+
+            Row row = sheet.getRow(i);
+            if (row == null) continue;
+
+            Cell idCell = row.getCell(0);
+            Cell userCell = row.getCell(1);
+            Cell adressCell = row.getCell(2);
+            Cell telephoneCell = row.getCell(3);
+            Cell emailCell = row.getCell(4);
+            Cell academicLevelCell = row.getCell(5);
+            Cell semesterCell = row.getCell(6);
+            Cell subjectsCell = row.getCell(8);
+            Cell thesisTitleCell = row.getCell(9);
+            Cell progressCell = row.getCell(10);
+            Cell passCell = row.getCell(11);
+
+
+            if (idCell != null) {
+                Student student = new Student(idCell.toString(), passCell.toString(), userCell.toString(), emailCell.toString(), adressCell.toString(),
+                        telephoneCell.toString(), academicLevelCell.toString(),semesterCell.toString(), subjectsCell.toString(), thesisTitleCell.toString(), Double.parseDouble(progressCell.toString()));
+                studentList.add(student);
             }
         }
 
-        // Finding Student Passwords (Column 11 in Sheet 2)
-        studentPasswordFromExcelFile.clear();
-        for (Row row : sheet) {
-            Cell cell = row.getCell(11);
-            if (cell != null) {
-                studentPasswordFromExcelFile.add(cell.toString());
-            }
-        }
-
-        // Reading Admin IDs (Column 0 in Sheet 3)
+        // Finding Students In sheet 2
         sheet = wb.getSheetAt(3);
-        adminIDFromExcelFile.clear();
-        for (Row row : sheet) {
-            Cell cell = row.getCell(0);
-            if (cell != null) {
-                adminIDFromExcelFile.add(cell.toString());
+        facultyList.clear();
+        for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+
+            Row row = sheet.getRow(i);
+            if (row == null) continue;
+
+            Cell idCell = row.getCell(0);
+            Cell userCell = row.getCell(1);
+            Cell degreeCell = row.getCell(2);
+            Cell researchCell =row.getCell(3);
+            Cell emailCell =row.getCell(4);
+            Cell officeCell = row.getCell(5);
+            Cell coursesCell = row.getCell(6);
+            Cell passCell = row.getCell(7);
+
+
+            if (idCell != null) {
+                Faculty faculty = new Faculty(idCell.toString(),passCell.toString(),userCell.toString(),emailCell.toString(), degreeCell.toString()
+                , researchCell.toString(), officeCell.toString(), coursesCell.toString());
+                facultyList.add(faculty);
             }
         }
 
-        // Reading Admin Passwords (Column 7 in Sheet 3)
-        adminPasswordFromExcelFile.clear();
-        for (Row row : sheet) {
-            Cell cell = row.getCell(7);
-            if (cell != null) {
-                adminPasswordFromExcelFile.add(cell.toString());
+        sheet = wb.getSheetAt(4);
+        eventList.clear();
+        for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+
+            Row row = sheet.getRow(i);
+            if (row == null) continue;
+
+            Cell idCell = row.getCell(0);
+            Cell nameCell = row.getCell(1);
+            Cell descriptionCell = row.getCell(2);
+            Cell locationCell =row.getCell(3);
+            Cell dateTimeCell =row.getCell(4);
+            Cell capacityCell = row.getCell(5);
+            Cell costCell = row.getCell(6);
+            Cell registeredStudentsCell = row.getCell(8);
+
+            if (idCell != null) {
+                Event event = new Event(idCell.toString(), nameCell.toString(), descriptionCell.toString(), locationCell.toString(),
+                        dateTimeCell.toString(),Double.parseDouble(capacityCell.toString()), costCell.toString(), registeredStudentsCell.toString());
+                eventList.add(event);
             }
-        }
-        for(String a: studentNamesFromExcelFile){
-            System.out.println(a);
         }
 
         wb.close();

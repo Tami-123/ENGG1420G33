@@ -1,48 +1,38 @@
 package com.example.phase1_1420;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import java.time.LocalDate;
-
 public class Event {
-    private final StringProperty name = new SimpleStringProperty(this, "name");
-    private final ObjectProperty<LocalDate> date = new SimpleObjectProperty<>(this, "date");
 
-    public Event(String name, LocalDate date) {
-        setName(name);
-        setDate(date);
-    }
+    protected String eventID;
+    protected String eventName;
+    protected String description;
+    protected String location;
+    protected String dateTime;
+    protected double capacity;
+    protected String cost;
+    protected String registeredStudents;
 
-    // Name property methods
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public String getName() {
-        return name.get();
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    // Date property methods
-    public ObjectProperty<LocalDate> dateProperty() {
-        return date;
-    }
-
-    public LocalDate getDate() {
-        return date.get();
-    }
-
-    public void setDate(LocalDate date) {
-        this.date.set(date);
+    public Event(String eventID, String eventName, String description, String location, String dateTime, double capacity,
+                 String cost, String registeredStudents){
+        this.eventID = eventID;
+        this.eventName = eventName;
+        this.description = description;
+        this.location = location;
+        this.dateTime = dateTime;
+        this.capacity = capacity;
+        this.cost = cost;
+        this.registeredStudents = registeredStudents;
     }
 
     @Override
     public String toString() {
-        return getName() + " (" + getDate() + ")";
+        return "EventId: " + eventID +
+                " | Name: " + eventName +
+                " | Description: " + description +
+                " | location: " + location +
+                " | Date & Time: " + dateTime +
+                " | Capacity: " + capacity +
+                " | Cost: " + cost +
+                " | Students Registered: " + registeredStudents;
     }
+
 }

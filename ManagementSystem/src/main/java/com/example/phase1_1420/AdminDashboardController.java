@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
@@ -17,6 +18,8 @@ public class AdminDashboardController {
     @FXML private Pane sidebarPane;
     @FXML private Button toggleButton;
     @FXML private StackPane contentArea;
+    @FXML private Text UserName;
+    @FXML private Text UserID;
     private boolean sidebarVisible = false;
 
     @FXML
@@ -25,6 +28,8 @@ public class AdminDashboardController {
         sidebarPane.setTranslateX(-200);
         toggleButton.setText("☰");
         loadContent("admin-dashboard-view.fxml");
+        UserName.setText(UserDatabase.CurrentUser.getUsername());
+        UserID.setText(UserDatabase.CurrentUser.getId());
     }
 
     @FXML
