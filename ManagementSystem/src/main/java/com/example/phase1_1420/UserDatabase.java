@@ -37,7 +37,7 @@ public class UserDatabase {
         User user = userMap.get(username);
         if (user != null && user.getPassword().equals(password)) {
             CurrentUser = user;
-            return (user instanceof Student) ? "USER" : "ADMIN";
+            return (CurrentUser.role);
         }
         return null;
     }

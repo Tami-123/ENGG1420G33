@@ -31,7 +31,7 @@ public class LoginController {
 
         if (role != null) {
             failedAttempts = 0; // Reset on success
-            loadDashboard(role, username);
+            loadDashboard(role);
         } else {
             failedAttempts++;
             errorLabel.setText("Invalid Login! - (" + failedAttempts + "/" + MAX_ATTEMPTS + " Login Attempts Used)");
@@ -48,7 +48,7 @@ public class LoginController {
         }
     }
 
-    private void loadDashboard(String role, String username) {
+    private void loadDashboard(String role) {
         try {
             String fxmlFile = "ADMIN".equals(role) ? "admin-dashboard.fxml" : "user-dashboard.fxml";
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/phase1_1420/" + fxmlFile));
