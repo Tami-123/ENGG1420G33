@@ -24,8 +24,8 @@ public class SubjectManagement {
             FXMLLoader loader = new FXMLLoader(SubjectManagement.class.getResource(fxmlFile));
             Parent root = loader.load();
 
-            SubjectManagementController controller = loader.getController();
-            controller.setAdminMode(isAdmin);
+           SubjectManagementController controller = loader.getController();
+           controller.setAdminMode(isAdmin);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

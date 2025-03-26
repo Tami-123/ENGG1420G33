@@ -6,9 +6,32 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class SubjectManagementController {
+
+
+    private ObservableList<Subject> subjects = FXCollections.observableArrayList();
+    private final ExcelFile excelReader = new ExcelFile();
+
+    public void saveSubjectsToExcel() {
+        try {
+            excelReader.writeSubjectsToExcel(subjects); // subjects is the ObservableList<Subject>
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setSubjectList() {
+        try {
+            excelReader.ReadingNameExcelFile(); // or whatever your method is called
+            this.subjects = FXCollections.observableArrayList(excelReader.subjectList);
+            subjectTable.setItems(subjects);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private TextField subjectNameField;
@@ -36,9 +59,6 @@ public class SubjectManagementController {
 
     private boolean isAdmin = false;
 
-    // This is the key part - use an ObservableList to store subjects
-    private final ObservableList<Subject> subjects = FXCollections.observableArrayList();
-
     @FXML
     public void initialize() {
         // Configure table columns with correct property names
@@ -53,10 +73,14 @@ public class SubjectManagementController {
                 (observable, oldValue, newValue) -> showSubjectDetails(newValue));
 
         // Load existing subjects
-        loadSubjectsFromDatabase();
+        setSubjectList();
 
         // Set default mode
-        setAdminMode(false);
+        if (UserDatabase.CurrentUser.getRole().equals("ADMIN")) {
+            setAdminMode(true);
+        }else {
+            setAdminMode(false);
+        }
     }
 
     private void showSubjectDetails(Subject subject) {
@@ -97,12 +121,7 @@ public class SubjectManagementController {
         }
 
         // Create new subject
-        Subject newSubject = new Subject(name, code);
-
-        // Add to database
-        boolean success = addSubjectToDatabase(newSubject);
-
-        if (success) {
+        Subject newSubject = new Subject(code, name);
             // Add to the observable list - this will automatically update the table view
             subjects.add(newSubject);
 
@@ -112,7 +131,8 @@ public class SubjectManagementController {
             // Show success message
             showAlert(Alert.AlertType.INFORMATION, "Success",
                     "Subject added successfully.");
-        }
+            saveSubjectsToExcel();
+
     }
 
     @FXML
@@ -143,10 +163,7 @@ public class SubjectManagementController {
         selectedSubject.setName(name);
         selectedSubject.setCode(code);
 
-        // Update in database
-        boolean success = updateSubjectInDatabase(selectedSubject);
 
-        if (success) {
             // Refresh the table (not strictly necessary with properties)
             subjectTable.refresh();
 
@@ -156,7 +173,8 @@ public class SubjectManagementController {
             // Show success message
             showAlert(Alert.AlertType.INFORMATION, "Success",
                     "Subject updated successfully.");
-        }
+        saveSubjectsToExcel();
+
     }
 
     @FXML
@@ -183,9 +201,7 @@ public class SubjectManagementController {
 
         Optional<ButtonType> result = confirmation.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            boolean success = deleteSubjectFromDatabase(selectedSubject);
 
-            if (success) {
                 // Remove from the observable list - this will update the table
                 subjects.remove(selectedSubject);
 
@@ -195,51 +211,11 @@ public class SubjectManagementController {
                 // Show success message
                 showAlert(Alert.AlertType.INFORMATION, "Success",
                         "Subject deleted successfully.");
-            }
+            saveSubjectsToExcel();
+
         }
     }
 
-    private void loadSubjectsFromDatabase() {
-        // Clear existing items
-        subjects.clear();
-
-        // Add your database retrieval code here
-        // For example:
-        // List<Subject> loadedSubjects = subjectDAO.getAllSubjects();
-        // subjects.addAll(loadedSubjects);
-
-        // For testing, you can add some sample data
-        subjects.add(new Subject("Mathematics", "MATH101"));
-        subjects.add(new Subject("Computer Science", "CS101"));
-        subjects.add(new Subject("Physics", "PHYS101"));
-    }
-
-    private boolean addSubjectToDatabase(Subject subject) {
-        // Add your database insertion code here
-        // For example:
-        // return subjectDAO.insert(subject);
-
-        // For testing, just return true
-        return true;
-    }
-
-    private boolean updateSubjectInDatabase(Subject subject) {
-        // Add your database update code here
-        // For example:
-        // return subjectDAO.update(subject);
-
-        // For testing, just return true
-        return true;
-    }
-
-    private boolean deleteSubjectFromDatabase(Subject subject) {
-        // Add your database deletion code here
-        // For example:
-        // return subjectDAO.delete(subject);
-
-        // For testing, just return true
-        return true;
-    }
 
     private void clearFields() {
         subjectNameField.clear();

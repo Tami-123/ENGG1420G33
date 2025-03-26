@@ -54,19 +54,7 @@ public class UserDashboardController {
     private void handleCourses() { loadContent("user-courses-view.fxml"); }
 
     @FXML
-    private void handleSubjects() {
-        try {
-                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/phase1_1420/subject-management-view.fxml"));
-                 Parent root = loader.load();
-                 SubjectManagementController controller = loader.getController();
-                 controller.setAdminMode(false);
-                 contentArea.getChildren().clear();
-                 contentArea.getChildren().add(root);
-             } catch (Exception e) {
-                 e.printStackTrace();
-             }
-        }
-
+    private void handleSubjects() {loadContent("subject-management-view.fxml");}
 
 
         @FXML

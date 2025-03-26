@@ -1,45 +1,34 @@
 package com.example.phase1_1420;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class Subject {
-    private final StringProperty name = new SimpleStringProperty(this, "name");
-    private final StringProperty code = new SimpleStringProperty(this, "code");
 
-    public Subject(String name, String code) {
-        setName(name);
-        setCode(code);
+    protected String subjectCode;
+    protected String subjectName;
+
+
+    public Subject(String subjectCode, String subjectName){
+        this.subjectCode = subjectCode;
+        this.subjectName = subjectName;
     }
 
-    // Name property methods
-    public StringProperty nameProperty() {
-        return name;
+    public String getName(){
+        return this.subjectName;
     }
 
-    public String getName() {
-        return name.get();
+    public String getCode(){
+        return this.subjectCode;
     }
 
-    public void setName(String name) {
-        this.name.set(name);
+    public void setName(String subjectName){
+        this.subjectName = subjectName;
     }
 
-    // Code property methods
-    public StringProperty codeProperty() {
-        return code;
-    }
-
-    public String getCode() {
-        return code.get();
-    }
-
-    public void setCode(String code) {
-        this.code.set(code);
+    public void setCode(String subjectCode){
+        this.subjectCode = subjectCode;
     }
 
     @Override
-    public String toString() {
-        return getName() + " (" + getCode() + ")";
+    public String toString(){
+        return "Subject Code: " + subjectCode + " | Subject Name: " + subjectName;
     }
 }

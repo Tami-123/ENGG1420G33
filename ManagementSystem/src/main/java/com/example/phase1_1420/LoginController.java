@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
+
 public class LoginController {
     @FXML private TextField userField;
     @FXML private PasswordField passField;
@@ -23,7 +24,7 @@ public class LoginController {
         String username = userField.getText();
         String password = passField.getText();
 
-        ReadingExcelFile a = new ReadingExcelFile();
+        ExcelFile a = new ExcelFile();
         a.ReadingNameExcelFile();
 
 

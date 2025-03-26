@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.SubjectManagementController">
+<VBox spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.SubjectManagementController">
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
     <children>
-        <Label style="-fx-font-size: 20; -fx-font-weight: bold;" text="Subject Management" />
+        <Label style="-fx-font-size: 20; -fx-font-weight: bold;" text="Subject Management">
+         <padding>
+            <Insets left="35.0" />
+         </padding></Label>
         <HBox spacing="10">
             <children>
-                <TextField fx:id="subjectNameField" promptText="Subject Name" />
                 <TextField fx:id="subjectCodeField" promptText="Subject Code" />
+                <TextField fx:id="subjectNameField" promptText="Subject Name" />
                 <Button fx:id="addButton" onAction="#handleAddSubject" text="Add" />
                 <Button fx:id="editButton" onAction="#handleEditSubject" text="Edit" />
                 <Button fx:id="deleteButton" onAction="#handleDeleteSubject" text="Delete" />
@@ -21,8 +29,8 @@
         </HBox>
         <TableView fx:id="subjectTable">
             <columns>
-                <TableColumn fx:id="subjectNameColumn" text="Subject Name" prefWidth="150" />
-                <TableColumn fx:id="subjectCodeColumn" text="Subject Code" prefWidth="150" />
+                <TableColumn fx:id="subjectCodeColumn" prefWidth="150" text="Subject Code" />
+                <TableColumn fx:id="subjectNameColumn" prefWidth="150" text="Subject Name" />
             </columns>
         </TableView>
     </children>

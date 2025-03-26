@@ -16,25 +16,30 @@ public class UserDatabase {
 
         //Read Excel Sheet for Students & populate into map
         try {
-            ReadingExcelFile reader = new ReadingExcelFile();
+            ExcelFile reader = new ExcelFile();
             reader.ReadingNameExcelFile();
 
             for (Student student : reader.studentList) {
                 userMap.put(student.getId(), student);
             }
+            for (Faculty faculty : reader.facultyList){
+                userMap.put(faculty.getId(), faculty);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        // Admin
-        userMap.put("admin", new User("ADMIN001", "admin123", "admin", "ADMIN", "admin@uofg.com"));
 
-        // Student
-        userMap.put("user", new User("USER001", "user123", "user", "USER", "user@uofg.com"));
+        // Admin
+        userMap.put("ADMIN", new User("ADMIN001", "admin123", "admin", "ADMIN", "admin@uofg.com"));
+
+        // User
+        userMap.put("USER", new User("USER001", "user123", "user", "USER", "user@uofg.com"));
     }
 
     public static String authenticate(String username, String password) {
-        User user = userMap.get(username);
+        //TO upper case to remove case sensitivty for login id
+        User user = userMap.get(username.toUpperCase());
         if (user != null && user.getPassword().equals(password)) {
             CurrentUser = user;
             return (CurrentUser.role);
