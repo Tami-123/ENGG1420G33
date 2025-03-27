@@ -11,19 +11,19 @@ public class Subject {
         this.subjectName = subjectName;
     }
 
-    public String getSubName(){
+    public String getName(){
         return this.subjectName;
     }
 
-    public void setSubName(String subjectName){
+    public void setName(String subjectName){
         this.subjectName = subjectName;
     }
 
-    public String getSubCode(){
+    public String getCode(){
         return this.subjectCode;
     }
 
-    public void setSubCode(String subjectCode){
+    public void setCode(String subjectCode){
         this.subjectCode = subjectCode;
     }
 

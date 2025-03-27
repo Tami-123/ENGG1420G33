@@ -37,8 +37,8 @@ public class ExcelFile {
             Cell nameCell = row.createCell(1);
 
 
-            codeCell.setCellValue(subject.getSubCode());
-            nameCell.setCellValue(subject.getSubName());
+            codeCell.setCellValue(subject.getCode());
+            nameCell.setCellValue(subject.getName());
         }
 
         fis.close();
@@ -80,7 +80,7 @@ public class ExcelFile {
 
             codeCell.setCellValue(course.getCourseCode());
             nameCell.setCellValue(course.getCourseName());
-            subjectCodeCell.setCellValue(course.getSubCode());
+            subjectCodeCell.setCellValue(course.getCode());
             sectionCell.setCellValue(course.getSectionNumber());
             capacityCell.setCellValue(course.getCapacity());
             lectureTimeCell.setCellValue(course.getLectureTime());
