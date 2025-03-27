@@ -85,8 +85,8 @@ public class SubjectManagementController {
 
     private void showSubjectDetails(Subject subject) {
         if (subject != null) {
-            subjectNameField.setText(subject.getName());
-            subjectCodeField.setText(subject.getCode());
+            subjectNameField.setText(subject.getSubName());
+            subjectCodeField.setText(subject.getSubCode());
         } else {
             clearFields();
         }
@@ -160,8 +160,8 @@ public class SubjectManagementController {
         }
 
         // Update subject properties
-        selectedSubject.setName(name);
-        selectedSubject.setCode(code);
+        selectedSubject.setSubName(name);
+        selectedSubject.setSubCode(code);
 
 
             // Refresh the table (not strictly necessary with properties)
@@ -197,7 +197,7 @@ public class SubjectManagementController {
         confirmation.setTitle("Confirm Deletion");
         confirmation.setHeaderText("Delete Subject");
         confirmation.setContentText("Are you sure you want to delete " +
-                selectedSubject.getName() + " (" + selectedSubject.getCode() + ")?");
+                selectedSubject.getSubName() + " (" + selectedSubject.getSubCode() + ")?");
 
         Optional<ButtonType> result = confirmation.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {

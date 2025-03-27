@@ -11,21 +11,22 @@ public class Subject {
         this.subjectName = subjectName;
     }
 
-    public String getName(){
+    public String getSubName(){
         return this.subjectName;
     }
 
-    public String getCode(){
-        return this.subjectCode;
-    }
-
-    public void setName(String subjectName){
+    public void setSubName(String subjectName){
         this.subjectName = subjectName;
     }
 
-    public void setCode(String subjectCode){
+    public String getSubCode(){
+        return this.subjectCode;
+    }
+
+    public void setSubCode(String subjectCode){
         this.subjectCode = subjectCode;
     }
+
 
     @Override
     public String toString(){

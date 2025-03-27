@@ -37,8 +37,56 @@ public class ExcelFile {
             Cell nameCell = row.createCell(1);
 
 
-            codeCell.setCellValue(subject.getCode());
-            nameCell.setCellValue(subject.getName());
+            codeCell.setCellValue(subject.getSubCode());
+            nameCell.setCellValue(subject.getSubName());
+        }
+
+        fis.close();
+
+        // Save changes
+        FileOutputStream fos = new FileOutputStream(file);
+        wb.write(fos);
+        fos.close();
+        wb.close();
+    }
+
+    //Write Courses to excel
+    public void writeCoursesToExcel(List<Course> updatedCourses) throws IOException {
+        File file = new File("UMS_Data.xlsx");
+        FileInputStream fis = new FileInputStream(file);
+        Workbook wb = WorkbookFactory.create(fis);
+        Sheet sheet = wb.getSheetAt(1); // Subjects in sheet 0
+
+        // Clear old data (except header)
+        for (int i = sheet.getLastRowNum(); i > 0; i--) {
+            Row row = sheet.getRow(i);
+            if (row != null) sheet.removeRow(row);
+        }
+
+        // Write updated subject list starting from row 1
+        int rowIndex = 1;
+        for (Course course : updatedCourses) {
+            Row row = sheet.createRow(rowIndex++);
+
+            Cell codeCell = row.createCell(0);
+            Cell nameCell = row.createCell(1);
+            Cell subjectCodeCell = row.createCell(2);
+            Cell sectionCell = row.createCell(3);
+            Cell capacityCell = row.createCell(4);
+            Cell lectureTimeCell = row.createCell(5);
+            Cell finalTimeCell = row.createCell(6);
+            Cell locationCell = row.createCell(7);
+            Cell teacherCell = row.createCell(8);
+
+            codeCell.setCellValue(course.getCourseCode());
+            nameCell.setCellValue(course.getCourseName());
+            subjectCodeCell.setCellValue(course.getSubCode());
+            sectionCell.setCellValue(course.getSectionNumber());
+            capacityCell.setCellValue(course.getCapacity());
+            lectureTimeCell.setCellValue(course.getLectureTime());
+            finalTimeCell.setCellValue(course.getFinalExamDateTime());
+            locationCell.setCellValue(course.getLocation());
+            teacherCell.setCellValue(course.getTeacherName());
         }
 
         fis.close();

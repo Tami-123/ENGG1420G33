@@ -35,6 +35,10 @@ public class User {
         return password;
     }
 
+    public String getEmail(){
+        return email;
+    }
+
     @Override
     public String toString() {
         return "ID: " + id + " | Password: " + password;

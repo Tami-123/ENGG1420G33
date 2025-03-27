@@ -23,6 +23,62 @@ public class Student extends User{
         this.progress = progress * 100;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getAcademicLevel() {
+        return academicLevel;
+    }
+
+    public void setAcademicLevel(String academicLevel) {
+        this.academicLevel = academicLevel;
+    }
+
+    public String getCurrentSem() {
+        return currentSem;
+    }
+
+    public void setCurrentSem(String currentSem) {
+        this.currentSem = currentSem;
+    }
+
+    public String getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(String subjects) {
+        this.subjects = subjects;
+    }
+
+    public String getThesisTitle() {
+        return thesisTitle;
+    }
+
+    public void setThesisTitle(String thesisTitle) {
+        this.thesisTitle = thesisTitle;
+    }
+
+    public double getProgress() {
+        return progress;
+    }
+
+    public void setProgress(double progress) {
+        this.progress = (double) (progress * 100);
+    }
+
     @Override
     public String toString() {
         return "Username: " + username +

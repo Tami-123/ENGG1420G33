@@ -16,6 +16,38 @@ public class Faculty extends User {
         this.coursesOffered = coursesOffered;
     }
 
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public String getResearchInterest() {
+        return researchInterest;
+    }
+
+    public void setResearchInterest(String researchInterest) {
+        this.researchInterest = researchInterest;
+    }
+
+    public String getOfficeLocation() {
+        return officeLocation;
+    }
+
+    public void setOfficeLocation(String officeLocation) {
+        this.officeLocation = officeLocation;
+    }
+
+    public String getCoursesOffered() {
+        return coursesOffered;
+    }
+
+    public void setCoursesOffered(String coursesOffered) {
+        this.coursesOffered = coursesOffered;
+    }
+
     @Override
     public String toString() {
         return "Username: " + username +
