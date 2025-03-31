@@ -22,6 +22,7 @@
             <children>
                 <TextField fx:id="subjectCodeField" promptText="Subject Code" />
                 <TextField fx:id="subjectNameField" promptText="Subject Name" />
+                <TextField fx:id="searchField" promptText="Search by name or code..." />
                 <Button fx:id="addButton" onAction="#handleAddSubject" text="Add" />
                 <Button fx:id="editButton" onAction="#handleEditSubject" text="Edit" />
                 <Button fx:id="deleteButton" onAction="#handleDeleteSubject" text="Delete" />

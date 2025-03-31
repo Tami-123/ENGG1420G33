@@ -2,6 +2,7 @@ package com.example.phase1_1420;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,9 +26,8 @@ public class SubjectManagementController {
 
     public void setSubjectList() {
         try {
-            excelReader.ReadingNameExcelFile(); // or whatever your method is called
-            this.subjects = FXCollections.observableArrayList(excelReader.subjectList);
-            subjectTable.setItems(subjects);
+            excelReader.ReadingNameExcelFile();
+            allSubjects.setAll(excelReader.subjectList);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -38,6 +38,9 @@ public class SubjectManagementController {
 
     @FXML
     private TextField subjectCodeField;
+
+    @FXML
+    private TextField searchField;
 
     @FXML
     private Button addButton;
@@ -59,28 +62,33 @@ public class SubjectManagementController {
 
     private boolean isAdmin = false;
 
+
+    private final ObservableList<Subject> allSubjects = FXCollections.observableArrayList(); // master copy
+    private final FilteredList<Subject> filteredSubjects = new FilteredList<>(allSubjects, p -> true);
+
     @FXML
     public void initialize() {
-        // Configure table columns with correct property names
-        subjectNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         subjectCodeColumn.setCellValueFactory(new PropertyValueFactory<>("code"));
+        subjectNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        // Link the observable list to the table view
-        subjectTable.setItems(subjects);
+        subjectTable.setItems(filteredSubjects);
 
-        // Add selection listener for the table
         subjectTable.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showSubjectDetails(newValue));
+                (observable, oldValue, newValue) -> showSubjectDetails(newValue)
+        );
 
-        // Load existing subjects
-        setSubjectList();
+        // Search logic
+        searchField.textProperty().addListener((obs, oldValue, newValue) -> {
+            String lower = newValue.toLowerCase().trim();
+            filteredSubjects.setPredicate(subject -> {
+                if (lower.isEmpty()) return true;
+                return subject.getCode().toLowerCase().contains(lower) ||
+                        subject.getName().toLowerCase().contains(lower);
+            });
+        });
 
-        // Set default mode
-        if (UserDatabase.CurrentUser.getRole().equals("ADMIN")) {
-            setAdminMode(true);
-        }else {
-            setAdminMode(false);
-        }
+        setSubjectList(); // load data
+        setAdminMode(UserDatabase.CurrentUser.getRole().equals("ADMIN"));
     }
 
     private void showSubjectDetails(Subject subject) {
@@ -91,6 +99,8 @@ public class SubjectManagementController {
             clearFields();
         }
     }
+
+
 
     public void setAdminMode(boolean isAdmin) {
         this.isAdmin = isAdmin;
@@ -119,6 +129,13 @@ public class SubjectManagementController {
                     "Please enter both subject name and code.");
             return;
         }
+        for(Subject s : subjects){
+            if(s.getCode().equalsIgnoreCase(code)){
+                showAlert(Alert.AlertType.ERROR, "Duplicate Subject Code", "A subject with this code already exists.");
+                return;
+            }
+        }
+
 
         // Create new subject
         Subject newSubject = new Subject(code, name);
@@ -157,6 +174,12 @@ public class SubjectManagementController {
             showAlert(Alert.AlertType.WARNING, "Missing Information",
                     "Please enter both subject name and code.");
             return;
+        }
+        for(Subject s : subjects){
+            if(s.getCode().equalsIgnoreCase(code)){
+                showAlert(Alert.AlertType.ERROR, "Duplicate Subject Code", "A subject with this code already exists.");
+                return;
+            }
         }
 
         // Update subject properties
