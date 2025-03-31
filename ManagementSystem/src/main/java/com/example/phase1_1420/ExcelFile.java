@@ -98,6 +98,157 @@ public class ExcelFile {
         wb.close();
     }
 
+    //Write Students to excel
+    public void writeStudentsToExcel(List<Student> updatedStudents) throws IOException {
+        File file = new File("UMS_Data.xlsx");
+        FileInputStream fis = new FileInputStream(file);
+        Workbook wb = WorkbookFactory.create(fis);
+        Sheet sheet = wb.getSheetAt(2); // Subjects in sheet 0
+
+        // Clear old data (except header)
+        for (int i = sheet.getLastRowNum(); i > 0; i--) {
+            Row row = sheet.getRow(i);
+            if (row != null) sheet.removeRow(row);
+        }
+
+        // Write updated subject list starting from row 1
+        int rowIndex = 1;
+        for (Student student : updatedStudents) {
+            Row row = sheet.createRow(rowIndex++);
+
+            Cell idCell = row.createCell(0);
+            Cell userCell = row.createCell(1);
+            Cell addressCell = row.createCell(2);
+            Cell telephoneCell = row.createCell(3);
+            Cell emailCell = row.createCell(4);
+            Cell academicLevelCell = row.createCell(5);
+            Cell semesterCell = row.createCell(6);
+            Cell photoCell = row.createCell(7);
+            Cell subjectsCell = row.createCell(8);
+            Cell thesisTitleCell = row.createCell(9);
+            Cell progressCell = row.createCell(10);
+            Cell passCell = row.createCell(11);
+
+            idCell.setCellValue(student.getId());
+            userCell.setCellValue(student.getUsername());
+            addressCell.setCellValue(student.getAddress());
+            telephoneCell.setCellValue(student.getTelephone());
+            emailCell.setCellValue(student.getEmail());
+            academicLevelCell.setCellValue(student.getAcademicLevel());
+            semesterCell.setCellValue(student.getCurrentSem());
+            photoCell.setCellValue("default");
+            subjectsCell.setCellValue(student.getSubjects());
+            thesisTitleCell.setCellValue(student.getThesisTitle());
+            progressCell.setCellValue(student.getProgress());
+            passCell.setCellValue(student.getPassword());
+
+        }
+
+        fis.close();
+
+        // Save changes
+        FileOutputStream fos = new FileOutputStream(file);
+        wb.write(fos);
+        fos.close();
+        wb.close();
+    }
+
+
+
+    //Write Faculty to excel
+    public void writeFacultyToExcel(List<Faculty> updatedFaculty) throws IOException {
+        File file = new File("UMS_Data.xlsx");
+        FileInputStream fis = new FileInputStream(file);
+        Workbook wb = WorkbookFactory.create(fis);
+        Sheet sheet = wb.getSheetAt(3);
+
+        // Clear old data (except header)
+        for (int i = sheet.getLastRowNum(); i > 0; i--) {
+            Row row = sheet.getRow(i);
+            if (row != null) sheet.removeRow(row);
+        }
+
+        // Write updated subject list starting from row 1
+        int rowIndex = 1;
+        for (Faculty faculty : updatedFaculty) {
+            Row row = sheet.createRow(rowIndex++);
+
+            Cell idCell = row.createCell(0);
+            Cell userCell = row.createCell(1);
+            Cell degreeCell = row.createCell(2);
+            Cell researchCell = row.createCell(3);
+            Cell emailCell = row.createCell(4);
+            Cell officeCell = row.createCell(5);
+            Cell coursesCell = row.createCell(6);
+            Cell passCell = row.createCell(7);
+
+            idCell.setCellValue(faculty.getId());
+            userCell.setCellValue(faculty.getUsername());
+            degreeCell.setCellValue(faculty.getDegree());
+            researchCell.setCellValue(faculty.getResearchInterest());
+            emailCell.setCellValue(faculty.getEmail());
+            officeCell.setCellValue(faculty.getOfficeLocation());
+            coursesCell.setCellValue(faculty.getCoursesOffered());
+            passCell.setCellValue(faculty.getPassword());
+
+        }
+
+        fis.close();
+
+        // Save changes
+        FileOutputStream fos = new FileOutputStream(file);
+        wb.write(fos);
+        fos.close();
+        wb.close();
+    }
+
+    //Write the Event's back to the excel file after edit in GUI
+    public void writeEventsToExcel(List<Event> updatedEvents) throws IOException {
+        File file = new File("UMS_Data.xlsx");
+        FileInputStream fis = new FileInputStream(file);
+        Workbook wb = WorkbookFactory.create(fis);
+        Sheet sheet = wb.getSheetAt(4); // Subjects in sheet 0
+
+        // Clear old data (except header)
+        for (int i = sheet.getLastRowNum(); i > 0; i--) {
+            Row row = sheet.getRow(i);
+            if (row != null) sheet.removeRow(row);
+        }
+
+        // Write updated subject list starting from row 1
+        int rowIndex = 1;
+        for (Event event : updatedEvents) {
+            Row row = sheet.createRow(rowIndex++);
+
+            Cell idCell = row.createCell(0);
+            Cell nameCell = row.createCell(1);
+            Cell descriptionCell = row.createCell(2);
+            Cell locationCell = row.createCell(3);
+            Cell dateTimeCell = row.createCell(4);
+            Cell capacityCell = row.createCell(5);
+            Cell costCell = row.createCell(6);
+            Cell photoCell = row.createCell(7);
+            Cell registeredStudentsCell = row.createCell(8);
+
+            idCell.setCellValue(event.getEventID());
+            nameCell.setCellValue(event.getEventID());
+            descriptionCell.setCellValue(event.getDescription());
+            locationCell.setCellValue(event.getLocation());
+            dateTimeCell.setCellValue(event.getDateTime()); // Assumed as string or formatted
+            capacityCell.setCellValue(event.getCapacity());
+            costCell.setCellValue(event.getCost());
+            photoCell.setCellValue("default"); //PHOTO
+            registeredStudentsCell.setCellValue(event.getRegisteredStudents());
+        }
+
+        fis.close();
+
+        // Save changes
+        FileOutputStream fos = new FileOutputStream(file);
+        wb.write(fos);
+        fos.close();
+        wb.close();
+    }
 
     //Read all new data, from all sheets whenever reading
     public void ReadingNameExcelFile() throws IOException {
