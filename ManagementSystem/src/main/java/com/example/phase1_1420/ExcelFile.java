@@ -18,7 +18,7 @@ public class ExcelFile {
 
     //Write the subject's back to the excel file after edit in GUI
     public void writeSubjectsToExcel(List<Subject> updatedSubjects) throws IOException {
-        File file = new File("UMS_Data.xlsx");
+        File file = new File("src/main/resources/UMS_Data.xlsx");
         FileInputStream fis = new FileInputStream(file);
         Workbook wb = WorkbookFactory.create(fis);
         Sheet sheet = wb.getSheetAt(0); // Subjects in sheet 0
@@ -101,7 +101,7 @@ public class ExcelFile {
 
     //Read all new data, from all sheets whenever reading
     public void ReadingNameExcelFile() throws IOException {
-        File file = new File("UMS_Data.xlsx");
+        File file = new File("/Users/keanurangayah/Downloads/JAVALAbs/ENGG1420G33/ManagementSystem/src/main/java/com/example/phase1_1420/UMS_Data.xlsx");
         FileInputStream fis = new FileInputStream(file);
         Workbook wb = WorkbookFactory.create(fis);
 

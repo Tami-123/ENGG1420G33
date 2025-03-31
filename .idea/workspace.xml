@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="695edb3f-5990-4e7d-9437-02fba9d60a2e" name="Changes" comment="pull">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/UMS_Data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UMS_Data.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/ExcelFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/ExcelFile.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MainApp.executor": "Run",
+    "Application.TestExcelReading.executor": "Run",
+    "git-widget-placeholder": "main"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ManagementSystem/src/main/resources" />
+      <recent name="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.phase1_1420.MainApp" />
+      <module name="ENGG1420-Group33-Phase1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.phase1_1420.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainApp" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="pull" />
+    <option name="LAST_COMMIT_MESSAGE" value="pull" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.FileNotFoundException" package="java.io" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
