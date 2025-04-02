@@ -94,9 +94,8 @@ public class UserDashboardViewController implements Initializable {
         currentSemText.setText(currentStudent.getCurrentSem());
         graduationDateText.setText(calculateGraduationDate());
         
-        // Set progress to 0%
-        progressBar.setProgress(0.0);
-        progressLabel.setText("0.0% Complete");
+        progressBar.setProgress(currentStudent.getProgress() / 100 );
+        progressLabel.setText(currentStudent.getProgress()+ "% Complete");
     }
 
     private String calculateGraduationDate() {
