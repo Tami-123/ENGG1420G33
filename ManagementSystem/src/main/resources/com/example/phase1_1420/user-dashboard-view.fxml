@@ -1,52 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.phase1_1420.UserDashboardViewController"
-      spacing="15"
-
-      styleClass="dashboard-content">
+<VBox spacing="15" styleClass="dashboard-content" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.UserDashboardViewController">
 
     <!-- Student Information Section -->
     <VBox spacing="10" styleClass="info-section">
-        <Label text="Student Information" styleClass="section-header" />
+        <Label styleClass="section-header" text="Student Information">
+         <padding>
+            <Insets left="45.0" />
+         </padding></Label>
         <GridPane hgap="10" vgap="10">
-            <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="info-label" />
-            <Text fx:id="studentNameText" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="info-text" />
+            <Label styleClass="info-label" text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Text fx:id="studentNameText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             
-            <Label text="Student ID:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="info-label" />
-            <Text fx:id="studentIdText" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="info-text" />
+            <Label styleClass="info-label" text="Student ID:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Text fx:id="studentIdText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             
-            <Label text="Academic Level:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="info-label" />
-            <Text fx:id="academicLevelText" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="info-text" />
+            <Label styleClass="info-label" text="Academic Level:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Text fx:id="academicLevelText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             
-            <Label text="Current Semester:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="info-label" />
-            <Text fx:id="currentSemText" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="info-text" />
+            <Label styleClass="info-label" text="Current Semester:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Text fx:id="currentSemText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             
-            <Label text="Expected Graduation:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="info-label" />
-            <Text fx:id="graduationDateText" GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="info-text" />
+            <Label styleClass="info-label" text="Expected Graduation:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <Text fx:id="graduationDateText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+         <VBox.margin>
+            <Insets left="45.0" />
+         </VBox.margin>
         </GridPane>
     </VBox>
 
     <!-- Academic Progress Section -->
     <VBox spacing="10" styleClass="progress-section">
-        <Label text="Academic Progress" styleClass="section-header" />
+        <Label styleClass="section-header" text="Academic Progress">
+         <padding>
+            <Insets left="10.0" />
+         </padding></Label>
         <ProgressBar fx:id="progressBar" prefWidth="400" styleClass="progress-bar" />
         <Label fx:id="progressLabel" styleClass="progress-text" />
     </VBox>
 
     <!-- Current Courses Section -->
     <VBox spacing="10" styleClass="courses-section">
-        <Label text="Current Courses" styleClass="section-header" />
+        <Label styleClass="section-header" text="Current Courses" />
         <TableView fx:id="coursesTable" prefHeight="150" styleClass="data-table">
             <columns>
                 <TableColumn fx:id="courseCodeColumn" text="Course Code" />
@@ -59,7 +76,7 @@
 
     <!-- Registered Events Section -->
     <VBox spacing="10" styleClass="events-section">
-        <Label text="Registered Events" styleClass="section-header" />
+        <Label styleClass="section-header" text="Registered Events" />
         <TableView fx:id="eventsTable" prefHeight="150" styleClass="data-table">
             <columns>
                 <TableColumn fx:id="eventNameColumn" text="Event Name" />

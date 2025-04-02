@@ -66,7 +66,7 @@ public class UserDashboardController {
     private void handleDashboard() { loadContent("user-dashboard-view.fxml"); }
 
     @FXML
-    private void handleCourses() { loadContent("user-courses-view.fxml"); }
+    private void handleCourses() { loadContent("course-management-view.fxml"); }
 
     @FXML
     private void handleSubjects() { loadContent("subject-management-view.fxml"); }

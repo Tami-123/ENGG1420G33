@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.CourseManagementController">
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+    <children>
+        <Label style="-fx-font-size: 20; -fx-font-weight: bold;" text="Course Management">
+            <padding>
+                <Insets left="35.0" />
+            </padding>
+        </Label>
+
+        <HBox spacing="10">
+            <children>
+                <TextField fx:id="courseCodeField" promptText="Course Code" />
+                <TextField fx:id="courseNameField" promptText="Course Name" />
+                <ComboBox fx:id="subjectDropdown" promptText="Subject Code" />
+                <TextField fx:id="sectionField" promptText="Section" />
+                <TextField fx:id="locationField" promptText="Location" />
+            </children>
+        </HBox>
+
+        <HBox spacing="10">
+            <children>
+                <TextField fx:id="lectureTimeField" promptText="Lecture Time" />
+                <TextField fx:id="finalExamField" promptText="Final Exam Time" />
+                <TextField fx:id="capacityField" promptText="Capacity" />
+                <ComboBox fx:id="facultyDropdown" promptText="Faculty" />
+            </children>
+        </HBox>
+
+        <HBox spacing="10">
+            <children>
+                <Button fx:id="addButton" onAction="#handleAddCourse" text="Add" />
+                <Button fx:id="editButton" onAction="#handleEditCourse" text="Edit" />
+                <Button fx:id="deleteButton" onAction="#handleDeleteCourse" text="Delete" />
+                <Button fx:id="manageEnrollmentsButton" onAction="#handleManageEnrollments" text="Manage Enrollments" />
+            </children>
+        </HBox>
+
+        <TableView fx:id="courseTable">
+            <columns>
+                <TableColumn fx:id="courseCodeColumn" prefWidth="100" text="Course Code" />
+                <TableColumn fx:id="courseNameColumn" prefWidth="150" text="Course Name" />
+                <TableColumn fx:id="subjectCodeColumn" prefWidth="100" text="Subject Code" />
+                <TableColumn fx:id="sectionColumn" prefWidth="80" text="Section" />
+                <TableColumn fx:id="facultyColumn" prefWidth="150" text="Faculty" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>

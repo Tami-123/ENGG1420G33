@@ -33,8 +33,8 @@ public class UserDatabase {
         // Admin
         userMap.put("ADMIN", new User("ADMIN001", "admin123", "admin", "ADMIN", "admin@uofg.com"));
 
-        // User
-        userMap.put("USER", new User("USER001", "user123", "user", "USER", "user@uofg.com"));
+        // User -- Delete default user because it's useless for devlopment now
+        //userMap.put("USER", new User("USER001", "user123", "user", "USER", "user@uofg.com"));
     }
 
     public static String authenticate(String username, String password) {
