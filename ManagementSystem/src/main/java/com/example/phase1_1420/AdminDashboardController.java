@@ -57,7 +57,7 @@ public class AdminDashboardController {
     private void handleSubjects() {loadContent("subject-management-view.fxml");}
 
         @FXML
-    private void handleCourses() { loadContent("admin-courses-view.fxml"); }
+    private void handleCourses() { loadContent("course-management-view.fxml"); }
 
     @FXML
     private void handleStudents() { loadContent("admin-students-view.fxml"); }
