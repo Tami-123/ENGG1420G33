@@ -20,19 +20,34 @@ public class UserDashboardController {
     @FXML private Text UserName;
     @FXML private Text UserID;
     private boolean sidebarVisible = false;
+    private final ExcelFile excelReader = new ExcelFile();
 
     @FXML
     private void initialize() {
-        sidebarPane.setTranslateX(-200);
-        toggleButton.setText("☰");
-        loadContent("user-dashboard-view.fxml");
-        UserName.setText(UserDatabase.CurrentUser.getUsername());
-        UserID.setText(UserDatabase.CurrentUser.getId());
+        try {
+            // Load data from Excel
+            excelReader.ReadingNameExcelFile();
+            
+            // Get current student from UserDatabase
+            Student currentStudent = (Student) UserDatabase.CurrentUser;
+            
+            // Set user information
+            UserName.setText(currentStudent.getUsername());
+            UserID.setText(currentStudent.getId());
+            
+            // Initialize sidebar
+            sidebarPane.setTranslateX(-200);
+            toggleButton.setText("☰");
+            
+            // Load initial content
+            loadContent("user-dashboard-view.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void toggleSidebar() {
-
         TranslateTransition slide = new TranslateTransition(Duration.millis(300), sidebarPane);
 
         if (sidebarVisible) {
@@ -54,10 +69,9 @@ public class UserDashboardController {
     private void handleCourses() { loadContent("user-courses-view.fxml"); }
 
     @FXML
-    private void handleSubjects() {loadContent("subject-management-view.fxml");}
+    private void handleSubjects() { loadContent("subject-management-view.fxml"); }
 
-
-        @FXML
+    @FXML
     private void handleEvents() { loadContent("user-events-view.fxml"); }
 
     @FXML

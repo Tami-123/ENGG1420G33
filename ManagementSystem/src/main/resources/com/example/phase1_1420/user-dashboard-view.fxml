@@ -1,33 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
 
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.phase1_1420.UserDashboardViewController"
+      spacing="15"
 
-<Pane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
-      fx:id="userPanel" prefWidth="800" prefHeight="600"
-      style="-fx-background-color: #f4f4f4; -fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 5;" fx:controller="com.example.phase1_1420.UserDashboardViewController">
+      styleClass="dashboard-content">
 
-    <!-- Use AnchorPane for Proper Layout -->
-    <AnchorPane prefWidth="800" prefHeight="600">
-        <!-- Centered VBox inside the panel -->
-        <VBox alignment="CENTER" spacing="20" prefWidth="400" prefHeight="300"
-              layoutX="200" layoutY="150"> <!-- Position in the center of the panel -->
+    <!-- Student Information Section -->
+    <VBox spacing="10" styleClass="info-section">
+        <Label text="Student Information" styleClass="section-header" />
+        <GridPane hgap="10" vgap="10">
+            <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="info-label" />
+            <Text fx:id="studentNameText" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="info-text" />
+            
+            <Label text="Student ID:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="info-label" />
+            <Text fx:id="studentIdText" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="info-text" />
+            
+            <Label text="Academic Level:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="info-label" />
+            <Text fx:id="academicLevelText" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="info-text" />
+            
+            <Label text="Current Semester:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="info-label" />
+            <Text fx:id="currentSemText" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="info-text" />
+            
+            <Label text="Expected Graduation:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="info-label" />
+            <Text fx:id="graduationDateText" GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="info-text" />
+        </GridPane>
+    </VBox>
 
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@img/UOFGLogo.png" />
-                </image>
-            </ImageView>
+    <!-- Academic Progress Section -->
+    <VBox spacing="10" styleClass="progress-section">
+        <Label text="Academic Progress" styleClass="section-header" />
+        <ProgressBar fx:id="progressBar" prefWidth="400" styleClass="progress-bar" />
+        <Label fx:id="progressLabel" styleClass="progress-text" />
+    </VBox>
 
-            <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Welcome, User!" />
-            <Button fx:id="myButton" mnemonicParsing="false" onAction="#buttontest" text="Button" />
-        </VBox>
-    </AnchorPane>
+    <!-- Current Courses Section -->
+    <VBox spacing="10" styleClass="courses-section">
+        <Label text="Current Courses" styleClass="section-header" />
+        <TableView fx:id="coursesTable" prefHeight="150" styleClass="data-table">
+            <columns>
+                <TableColumn fx:id="courseCodeColumn" text="Course Code" />
+                <TableColumn fx:id="courseNameColumn" text="Course Name" />
+                <TableColumn fx:id="instructorColumn" text="Instructor" />
+                <TableColumn fx:id="scheduleColumn" text="Schedule" />
+            </columns>
+        </TableView>
+    </VBox>
 
-</Pane>
+    <!-- Registered Events Section -->
+    <VBox spacing="10" styleClass="events-section">
+        <Label text="Registered Events" styleClass="section-header" />
+        <TableView fx:id="eventsTable" prefHeight="150" styleClass="data-table">
+            <columns>
+                <TableColumn fx:id="eventNameColumn" text="Event Name" />
+                <TableColumn fx:id="eventDateColumn" text="Date" />
+                <TableColumn fx:id="eventLocationColumn" text="Location" />
+            </columns>
+        </TableView>
+    </VBox>
+</VBox>

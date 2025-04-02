@@ -279,9 +279,27 @@ public class ExcelFile {
 
 
             if (idCell != null) {
+                System.out.println("\nReading student from Excel:");
+                System.out.println("- ID: " + idCell.toString());
+                System.out.println("- Name: " + userCell.toString());
+                System.out.println("- Raw Subjects Cell: '" + (subjectsCell != null ? subjectsCell.toString() : "null") + "'");
+                
+                double progress = 0.0;
+                try {
+                    if (progressCell != null) {
+                        progress = Double.parseDouble(progressCell.toString());
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Warning: Invalid progress value for student " + idCell.toString() + ". Setting to 0.");
+                    progress = 0.0;
+                }
+                
                 Student student = new Student(idCell.toString(), passCell.toString(), userCell.toString(), emailCell.toString(), adressCell.toString(),
-                        telephoneCell.toString(), academicLevelCell.toString(),semesterCell.toString(), subjectsCell.toString(), thesisTitleCell.toString(), Double.parseDouble(progressCell.toString()));
+                        telephoneCell.toString(), academicLevelCell.toString(),semesterCell.toString(), subjectsCell.toString(), thesisTitleCell.toString(), progress);
                 studentList.add(student);
+                
+                // Debug: Print the student's subjects after creation
+                System.out.println("- Processed Subjects: '" + student.getSubjects() + "'");
             }
         }
 
@@ -353,6 +371,7 @@ public class ExcelFile {
 
         sheet = wb.getSheetAt(1);
         courseList.clear();
+        System.out.println("Reading courses from Excel...");
         for (int i = 1; i <= sheet.getLastRowNum(); i++) {
 
             Row row = sheet.getRow(i);
@@ -371,11 +390,13 @@ public class ExcelFile {
 
 
             if (courseCodecell != null) {
+                System.out.println("Found course: " + courseNameCell.toString() + " with subject code: " + subjectCodeCell.toString());
                 Course course = new Course(courseCodecell.toString(), courseNameCell.toString(), subjectCodeCell.toString(), sectionNumberCell.toString(), Double.parseDouble(CapacityCell.toString()),
                         lectureTimeCell.toString(), finalTimeCell.toString(), locationCell.toString(), teacherCell.toString());
                 courseList.add(course);
             }
         }
+        System.out.println("Total courses read from Excel: " + courseList.size());
 
         wb.close();
         fis.close();

@@ -19,39 +19,39 @@
     <!-- Sidebar (Starts Open) -->
     <Pane fx:id="sidebarPane" layoutX="0" prefHeight="600" prefWidth="200" style="-fx-background-color: #ed7411;">
         <VBox fx:id="sidebar" alignment="TOP_CENTER" prefHeight="600" prefWidth="200" spacing="10">
-            <Button alignment="CENTER" onAction="#handleDashboard" text="Home" />
-            <Button alignment="CENTER" onAction="#handleSubjects" text="View Subjects Available" />
-            <Button alignment="CENTER" onAction="#handleCourses" text="View Courses" />
-            <Button alignment="CENTER" onAction="#handleEvents" text="View  Register Events" />
-            <Button alignment="CENTER" onAction="#handleProfile" text="Profile Management" />
-            <Button alignment="CENTER" onAction="#handleLogout" style="-fx-background-color: red; -fx-text-fill: white;" text="Logout" />
-         <ImageView fx:id="UserImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@img/Default.jpg" />
-            </image>
-            <VBox.margin>
-               <Insets top="50.0" />
-            </VBox.margin>
-         </ImageView>
-         <Text fx:id="UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Text>
-         <Text fx:id="UserID" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="#######">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Text>
+            <Button alignment="CENTER" onAction="#handleDashboard" text="Home" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" />
+            <Button alignment="CENTER" onAction="#handleSubjects" text="View Subjects Available" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" />
+            <Button alignment="CENTER" onAction="#handleCourses" text="View Courses" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" />
+            <Button alignment="CENTER" onAction="#handleEvents" text="View &amp; Register Events" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" />
+            <Button alignment="CENTER" onAction="#handleProfile" text="Profile Management" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" />
+            <Button alignment="CENTER" onAction="#handleLogout" style="-fx-background-color: #d63031; -fx-text-fill: white;" text="Logout" />
+            
+            <ImageView fx:id="UserImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@img/Default.jpg" />
+                </image>
+                <VBox.margin>
+                    <Insets top="50.0" />
+                </VBox.margin>
+            </ImageView>
+            
+            <Text fx:id="UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Text>
+            <Text fx:id="UserID" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="#######">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Text>
+            
             <padding>
                 <Insets top="100.0" />
             </padding>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
         </VBox>
     </Pane>
 
     <!-- Toggle Button (Always Visible) -->
-    <Button fx:id="toggleButton" layoutX="10" layoutY="10" onAction="#toggleSidebar" text="≡" />
+    <Button fx:id="toggleButton" layoutX="10" layoutY="10" onAction="#toggleSidebar" text="≡" style="-fx-background-color: #ed7411; -fx-text-fill: white;" />
 </AnchorPane>

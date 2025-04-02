@@ -5,33 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="695edb3f-5990-4e7d-9437-02fba9d60a2e" name="Changes" comment="pull">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ManagementSystem/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ManagementSystem/UMS_Data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UMS_Data.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/ExcelFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/ExcelFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UMS_Data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UMS_Data.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.MainApp.executor": "Run",
     "Application.TestExcelReading.executor": "Run",
+    "JUnit.All in ENGG1420-Group33-Phase1.executor": "Run",
     "git-widget-placeholder": "main"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420" />
       <recent name="$PROJECT_DIR$/ManagementSystem/src/main/resources" />
       <recent name="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MainApp">
     <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.phase1_1420.MainApp" />
       <module name="ENGG1420-Group33-Phase1" />
@@ -45,14 +59,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in ENGG1420-Group33-Phase1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ENGG1420-Group33-Phase1" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApp" />
+        <item itemvalue="JUnit.All in ENGG1420-Group33-Phase1" />
       </list>
     </recent_temporary>
   </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="pull">
+      <option name="closed" value="true" />
+      <created>1743457161310</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743457161310</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pull" />
@@ -67,5 +110,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ENGG1420G33$MainApp.ic" NAME="MainApp Coverage Results" MODIFIED="1743465847175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.phase1_1420.*</FILTER>
+    </SUITE>
   </component>
 </project>

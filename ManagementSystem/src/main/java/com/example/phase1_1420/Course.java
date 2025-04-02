@@ -14,7 +14,7 @@ public class Course extends Subject {
                   String sectionNumber, double capacity, String lectureTime,
                   String finalExamDateTime, String location, String teacherName) {
 
-        super(subjectCode, subjectCode.replaceAll("\\d", "")); // Remove numbers to make subject name
+        super(subjectCode, subjectCode); // Use subjectCode for both code and name
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.sectionNumber = sectionNumber;

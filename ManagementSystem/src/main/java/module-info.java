@@ -2,6 +2,7 @@ module com.example.phase1_1420 {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
 
 
     opens com.example.phase1_1420 to javafx.fxml;
