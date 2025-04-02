@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -20,8 +17,8 @@ import java.util.List;
 
 public class EnrollmentManager {
 
-    // Displays a modal window for managing student enrollments for a courses subject
-    public static void showForCourse(Course course, List<Student> allStudents, ExcelFile excelFile) {
+    // Displays a modal window for managing student enrollments for a course's subject
+    public static void showForCourse(Course course, List<Student> allStudents, ExcelFile excelFile, double currentCapacity) {
         String subjectCode = course.getCode(); // Get the subject code from the selected course
 
         // Setup a new modal window
@@ -33,13 +30,22 @@ public class EnrollmentManager {
         ObservableList<Student> observableStudents = FXCollections.observableArrayList(allStudents);
         ListView<CheckBox> listView = new ListView<>();
 
+        int initiallyEnrolled = 0;
+
         // Create a checkbox for each student, pre-selecting those enrolled in the subject
         for (Student student : observableStudents) {
             CheckBox cb = new CheckBox(student.getUsername() + " (" + student.getId() + ")");
             cb.setUserData(student); // Store the student object for later access
 
-            if (student.getSubjects() != null && student.getSubjects().contains(subjectCode)) {
-                cb.setSelected(true);
+            if (student.getSubjects() != null) {
+                String[] codes = student.getSubjects().split(",");
+                for (String code : codes) {
+                    if (code.trim().equals(subjectCode)) {
+                        cb.setSelected(true);
+                        initiallyEnrolled++;
+                        break;
+                    }
+                }
             }
             listView.getItems().add(cb);
         }
@@ -47,6 +53,22 @@ public class EnrollmentManager {
         // Save button applies the enrollment changes
         Button saveButton = new Button("Save Changes");
         saveButton.setOnAction(e -> {
+            int selectedCount = 0;
+            for (CheckBox cb : listView.getItems()) {
+                if (cb.isSelected()) {
+                    selectedCount++;
+                }
+            }
+
+            if (selectedCount > currentCapacity) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Capacity Exceeded");
+                alert.setHeaderText(null);
+                alert.setContentText("You cannot enroll more students than the course capacity (" + (int)currentCapacity + ").");
+                alert.showAndWait();
+                return;
+            }
+
             for (CheckBox cb : listView.getItems()) {
                 Student student = (Student) cb.getUserData();
                 List<String> subjects = new ArrayList<>();
@@ -76,12 +98,11 @@ public class EnrollmentManager {
             window.close();
         });
 
-
-        //Close buton closes the window without saving.
+        // Close buton closes the window without saving
         Button cancelButton = new Button("Cancel");
         cancelButton.setOnAction(e -> window.close());
 
-        //Layout for modal window
+        // Layout for modal window
         HBox buttonBox = new HBox(10, saveButton, cancelButton);
         VBox mainBox = new VBox(10, new Label("Select Students to Enroll in " + subjectCode), listView, buttonBox);
         mainBox.setPadding(new Insets(10));

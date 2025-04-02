@@ -255,7 +255,7 @@ public class CourseManagementController {
             return;
         }
 
-        EnrollmentManager.showForCourse(selected, excelReader.studentList, excelReader);
+        EnrollmentManager.showForCourse(selected, excelReader.studentList, excelReader, Double.parseDouble(selected.getCapacity()));
     }
 
 }
