@@ -142,7 +142,7 @@ public class CourseManagementController {
     @FXML
     private void handleAddCourse() {
         try {
-            int capacity = Integer.parseInt(capacityField.getText());
+            double capacity = Double.parseDouble(capacityField.getText());
             String code = courseCodeField.getText();
 
             for (Course c : allCourses) {
@@ -150,7 +150,12 @@ public class CourseManagementController {
                     showAlert("Duplicate", "Course code already exists.", Alert.AlertType.WARNING);
                     return;
                 }
+                if(c.getLectureTime().equals(lectureTimeField.getText()) && c.getLocation().equals(locationField.getText())){
+                    showAlert("Duplicate", "Lecutre Time & Location already exsists ", Alert.AlertType.WARNING);
+                    return;
+                }
             }
+
 
             Course newCourse = new Course(
                     code,
