@@ -20,19 +20,23 @@ import java.util.List;
 
 public class EnrollmentManager {
 
+    // Displays a modal window for managing student enrollments for a courses subject
     public static void showForCourse(Course course, List<Student> allStudents, ExcelFile excelFile) {
-        String subjectCode = course.getCode();
+        String subjectCode = course.getCode(); // Get the subject code from the selected course
 
+        // Setup a new modal window
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Manage Enrollments for Subject: " + subjectCode);
 
+        // Wrap the student list in an observable list for JavaFX
         ObservableList<Student> observableStudents = FXCollections.observableArrayList(allStudents);
         ListView<CheckBox> listView = new ListView<>();
 
+        // Create a checkbox for each student, pre-selecting those enrolled in the subject
         for (Student student : observableStudents) {
             CheckBox cb = new CheckBox(student.getUsername() + " (" + student.getId() + ")");
-            cb.setUserData(student);
+            cb.setUserData(student); // Store the student object for later access
 
             if (student.getSubjects() != null && student.getSubjects().contains(subjectCode)) {
                 cb.setSelected(true);
@@ -40,6 +44,7 @@ public class EnrollmentManager {
             listView.getItems().add(cb);
         }
 
+        // Save button applies the enrollment changes
         Button saveButton = new Button("Save Changes");
         saveButton.setOnAction(e -> {
             for (CheckBox cb : listView.getItems()) {
@@ -71,9 +76,12 @@ public class EnrollmentManager {
             window.close();
         });
 
+
+        //Close buton closes the window without saving.
         Button cancelButton = new Button("Cancel");
         cancelButton.setOnAction(e -> window.close());
 
+        //Layout for modal window
         HBox buttonBox = new HBox(10, saveButton, cancelButton);
         VBox mainBox = new VBox(10, new Label("Select Students to Enroll in " + subjectCode), listView, buttonBox);
         mainBox.setPadding(new Insets(10));
