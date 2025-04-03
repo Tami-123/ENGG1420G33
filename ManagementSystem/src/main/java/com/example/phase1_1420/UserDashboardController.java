@@ -76,6 +76,9 @@ public class UserDashboardController {
 
     @FXML
     private void handleProfile() { loadContent("user-profile-view.fxml"); }
+    
+    @FXML
+    private void handleFaculty() { loadContent("faculty-view.fxml");}
 
     @FXML
     private void handleLogout() {

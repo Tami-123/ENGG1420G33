@@ -23,6 +23,7 @@
             <Button alignment="CENTER" onAction="#handleSubjects" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" text="View Subjects Available" />
             <Button alignment="CENTER" onAction="#handleCourses" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" text="View Courses" />
             <Button alignment="CENTER" onAction="#handleEvents" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" text="View &amp; Register Events" />
+         <Button alignment="CENTER" onAction="#handleFaculty" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" text="Faculty Management" />
             <Button alignment="CENTER" onAction="#handleProfile" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" text="Profile Management" />
             <Button alignment="CENTER" onAction="#handleLogout" style="-fx-background-color: #d63031; -fx-text-fill: white;" text="Logout" />
             
