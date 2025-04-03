@@ -16,22 +16,6 @@ public class SubjectManagementController {
     private ObservableList<Subject> subjects = FXCollections.observableArrayList();
     private final ExcelFile excelReader = new ExcelFile();
 
-    public void saveSubjectsToExcel() {
-        try {
-            excelReader.writeSubjectsToExcel(subjects); // subjects is the ObservableList<Subject>
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void setSubjectList() {
-        try {
-            excelReader.ReadingNameExcelFile();
-            allSubjects.setAll(excelReader.subjectList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     private TextField subjectNameField;
@@ -100,6 +84,14 @@ public class SubjectManagementController {
         }
     }
 
+    public void setSubjectList() {
+        try {
+            excelReader.ReadingNameExcelFile();
+            allSubjects.setAll(excelReader.subjectList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void setAdminMode(boolean isAdmin) {
@@ -111,6 +103,14 @@ public class SubjectManagementController {
         addButton.setDisable(!isAdmin);
         editButton.setDisable(!isAdmin);
         deleteButton.setDisable(!isAdmin);
+    }
+
+    public void saveSubjectsToExcel() {
+        try {
+            excelReader.writeSubjectsToExcel(allSubjects); // subjects is the ObservableList<Subject>
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -140,7 +140,7 @@ public class SubjectManagementController {
         // Create new subject
         Subject newSubject = new Subject(code, name);
             // Add to the observable list - this will automatically update the table view
-            subjects.add(newSubject);
+            allSubjects.add(newSubject);
 
             // Clear input fields
             clearFields();
@@ -150,6 +150,7 @@ public class SubjectManagementController {
                     "Subject added successfully.");
             saveSubjectsToExcel();
 
+            subjectTable.refresh();
     }
 
     @FXML

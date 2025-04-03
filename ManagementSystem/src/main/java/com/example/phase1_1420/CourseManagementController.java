@@ -169,8 +169,24 @@ public class CourseManagementController {
                     facultyDropdown.getValue()
             );
 
+            // Add course to faculty object if found
+            for (Faculty faculty : excelReader.facultyList) {
+                if (faculty.getUsername().equals(newCourse.getTeacherName())) {
+                    String existing = faculty.getCoursesOffered();
+                    if (!existing.contains(newCourse.getCourseName())) {
+                        if (existing.isEmpty()) {
+                            faculty.setCoursesOffered(newCourse.getCourseName());
+                        } else {
+                            faculty.setCoursesOffered(existing + "," + newCourse.getCourseName());
+                        }
+                    }
+                }
+            }
+
+
             allCourses.add(newCourse);
             excelReader.courseList.add(newCourse);
+            excelReader.writeFacultyToExcel(excelReader.facultyList);
             excelReader.writeCoursesToExcel(excelReader.courseList);
             clearFields();
         } catch (Exception e) {
@@ -196,8 +212,24 @@ public class CourseManagementController {
             selected.setCapacity(Double.parseDouble(capacityField.getText()));
             selected.setTeacherName(facultyDropdown.getValue());
 
+
+            // Update faculty's offered courses
+            for (Faculty faculty : excelReader.facultyList) {
+                if (faculty.getUsername().equals(selected.getTeacherName())) {
+                    String existing = faculty.getCoursesOffered();
+                    if (!existing.contains(selected.getCourseName())) {
+                        if (existing.isEmpty()) {
+                            faculty.setCoursesOffered(selected.getCourseName());
+                        } else {
+                            faculty.setCoursesOffered(existing + "," + selected.getCourseName());
+                        }
+                    }
+                }
+            }
+
             courseTable.refresh();
             excelReader.writeCoursesToExcel(allCourses);
+            excelReader.writeFacultyToExcel(excelReader.facultyList);
             clearFields();
         } catch (Exception e) {
             showAlert("Error", "Invalid input: " + e.getMessage(), Alert.AlertType.ERROR);
