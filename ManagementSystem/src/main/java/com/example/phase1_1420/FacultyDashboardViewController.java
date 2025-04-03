@@ -20,18 +20,6 @@ public class FacultyDashboardViewController implements Initializable {
     @FXML private Text studentIdText;
     @FXML private Text DegreeLevelText;
     @FXML private Text CoursesOffText;
-    @FXML private Label progressLabel;
-    
-    @FXML private TableView<Course> coursesTable;
-    @FXML private TableColumn<Course, String> courseCodeColumn;
-    @FXML private TableColumn<Course, String> courseNameColumn;
-    @FXML private TableColumn<Course, String> instructorColumn;
-    @FXML private TableColumn<Course, String> scheduleColumn;
-    
-    @FXML private TableView<Event> eventsTable;
-    @FXML private TableColumn<Event, String> eventNameColumn;
-    @FXML private TableColumn<Event, String> eventDateColumn;
-    @FXML private TableColumn<Event, String> eventLocationColumn;
 
     private final ExcelFile excelReader = new ExcelFile();
     private Faculty currentFaculty;
@@ -53,39 +41,13 @@ public class FacultyDashboardViewController implements Initializable {
             System.out.println("- Courses Offered: " + currentFaculty.getCoursesOffered());
 
             
-            // Initialize table columns
-            initializeColumns();
-            
             // Update UI with student information
             updateStudentInfo();
-            
-            // Load tables with data
-            loadCoursesTable();
-            loadEventsTable();
+
         } catch (Exception e) {
             System.err.println("Error in initialize: " + e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    private void initializeColumns() {
-        // Courses table
-        courseCodeColumn.setCellValueFactory(cellData -> 
-            new SimpleStringProperty(cellData.getValue().getCourseCode()));
-        courseNameColumn.setCellValueFactory(cellData -> 
-            new SimpleStringProperty(cellData.getValue().getCourseName()));
-        instructorColumn.setCellValueFactory(cellData -> 
-            new SimpleStringProperty(cellData.getValue().getTeacherName()));
-        scheduleColumn.setCellValueFactory(cellData -> 
-            new SimpleStringProperty(cellData.getValue().getLectureTime()));
-
-        // Events table
-        eventNameColumn.setCellValueFactory(cellData -> 
-            new SimpleStringProperty(cellData.getValue().getEventName()));
-        eventDateColumn.setCellValueFactory(cellData -> 
-            new SimpleStringProperty(cellData.getValue().getDateTime()));
-        eventLocationColumn.setCellValueFactory(cellData -> 
-            new SimpleStringProperty(cellData.getValue().getLocation()));
     }
 
     private void updateStudentInfo() {
@@ -96,162 +58,4 @@ public class FacultyDashboardViewController implements Initializable {
 
     }
 
-
-
-    private void loadCoursesTable() {
-        // Get the student's subjects string from the current student object
-        String studentSubjectsStr = currentFaculty.getCoursesOffered();
-        System.out.println("\n=== Course Loading Debug ===");
-        System.out.println("Student ID: " + currentFaculty.getId());
-        System.out.println("Raw Subjects String: '" + studentSubjectsStr + "'");
-        
-        // Create an observable list to hold the enrolled courses
-        ObservableList<Course> enrolledCourses = FXCollections.observableArrayList();
-        
-        // Check if the student has any subjects registered
-        if (studentSubjectsStr == null || studentSubjectsStr.trim().isEmpty()) {
-            System.out.println("WARNING: Student has no subjects registered!");
-            coursesTable.setItems(enrolledCourses);
-            return;
-        }
-        
-        // Split the subjects string into an array and clean each subject
-        // Convert all subjects to uppercase for consistent case-insensitive comparison
-        String[] studentSubjects = studentSubjectsStr.split(",");
-        for (int i = 0; i < studentSubjects.length; i++) {
-            studentSubjects[i] = studentSubjects[i].trim().toUpperCase();
-        }
-        
-        // Print total number of available courses for debugging
-        System.out.println("Total Courses Available: " + excelReader.courseList.size());
-        
-        // Debug: Print all available courses with their details
-        System.out.println("\nAvailable Courses:");
-        for (Course course : excelReader.courseList) {
-            System.out.println("- " + course.getCourseName() + 
-                             "\n  Course Code: '" + course.getCourseCode() + "'" +
-                             "\n  Subject Code: '" + course.getCode() + "'");
-        }
-        
-        // Debug: Print the student's subjects after cleaning
-        System.out.println("\nStudent's Subjects:");
-        for (String subject : studentSubjects) {
-            if (!subject.trim().isEmpty()) {
-                System.out.println("- '" + subject + "'");
-            }
-        }
-        
-        // Create a set to keep track of processed subjects to avoid duplicates
-        java.util.Set<String> processedSubjects = new java.util.HashSet<>();
-        
-        // First pass: Match existing courses with student's subjects
-        for (Course course : excelReader.courseList) {
-            // Convert course's subject code to uppercase for consistent comparison
-            String subjectCode = course.getCode().trim().toUpperCase();
-            System.out.println("\nChecking course: " + course.getCourseName());
-            System.out.println("Subject code: '" + subjectCode + "'");
-            
-            boolean courseMatched = false;
-            // Check each of the student's subjects
-            for (String studentSubject : studentSubjects) {
-                if (studentSubject.isEmpty()) continue;
-                
-                System.out.println("Comparing with student subject: '" + studentSubject + "'");
-                
-                // Check for exact match (after converting to uppercase)
-                if (subjectCode.equals(studentSubject)) {
-                    // Only add the course if we haven't processed this subject code before
-                    if (!processedSubjects.contains(subjectCode)) {
-                        System.out.println("✓ Exact match found! Adding course: " + course.getCourseName());
-                        // Create a new course entry using the student's subject code
-                        Course matchedCourse = new Course(
-                            studentSubject,  // Use student's subject code as course code
-                            course.getCourseName(),
-                            studentSubject,
-                            course.getSectionNumber(),
-                            Double.parseDouble(course.getCapacity()),  // Convert String capacity to double
-                            course.getLectureTime(),
-                            course.getFinalExamDateTime(),
-                            course.getLocation(),
-                            course.getTeacherName()
-                        );
-                        enrolledCourses.add(matchedCourse);
-                        processedSubjects.add(subjectCode);  // Mark this subject as processed
-                        courseMatched = true;
-                        break;
-                    }
-                }
-            }
-            
-            if (!courseMatched) {
-                System.out.println("No match found for this course");
-            }
-        }
-        
-        // Second pass: Handle subjects that don't have corresponding courses
-        for (String studentSubject : studentSubjects) {
-            if (studentSubject.trim().isEmpty()) continue;
-            
-            // Check if we already have a course for this subject
-            boolean hasCorrespondingCourse = false;
-            for (Course course : enrolledCourses) {
-                if (course.getCode().trim().toUpperCase().equals(studentSubject)) {
-                    hasCorrespondingCourse = true;
-                    break;
-                }
-            }
-            
-            // If no course exists for this subject, look for it in the subject list
-            if (!hasCorrespondingCourse) {
-                for (Subject subject : excelReader.subjectList) {
-                    if (subject.getCode().trim().toUpperCase().equals(studentSubject)) {
-                        System.out.println("\nFound subject without course: " + subject.getName() + " (" + subject.getCode() + ")");
-                        // Create a basic course entry with minimal information
-                        Course basicCourse = new Course(
-                            studentSubject,  // Use student's subject code as course code
-                            subject.getName(),  // Use subject name as course name
-                            studentSubject,  // Use student's subject code
-                            "N/A",  // No section number available
-                            0.0,    // No capacity information
-                            "N/A",  // No lecture time available
-                            "N/A",  // No final exam date available
-                            "N/A",  // No location available
-                            "N/A"   // No teacher information available
-                        );
-                        enrolledCourses.add(basicCourse);
-                        processedSubjects.add(studentSubject);  // Mark this subject as processed
-                        System.out.println("✓ Added basic course entry for: " + subject.getName());
-                        break;
-                    }
-                }
-            }
-        }
-        
-        // Print final results and any warnings
-        System.out.println("\nTotal enrolled courses: " + enrolledCourses.size());
-        if (enrolledCourses.isEmpty()) {
-            System.out.println("WARNING: No courses were matched!");
-            System.out.println("This could be because:");
-            System.out.println("1. The student's subjects are not in the correct format");
-            System.out.println("2. The course subject codes don't match the student's subjects");
-            System.out.println("3. There might be extra spaces or case differences");
-        }
-        
-        // Update the courses table with the final list of courses
-        coursesTable.setItems(enrolledCourses);
-    }
-
-    private void loadEventsTable() {
-        // Filter events based on student's registration
-        ObservableList<Event> registeredEvents = FXCollections.observableArrayList();
-        String studentId = currentFaculty.getId();
-        
-        for (Event event : excelReader.eventList) {
-            if (event.getRegisteredStudents().contains(studentId)) {
-                registeredEvents.add(event);
-            }
-        }
-        
-        eventsTable.setItems(registeredEvents);
-    }
 }

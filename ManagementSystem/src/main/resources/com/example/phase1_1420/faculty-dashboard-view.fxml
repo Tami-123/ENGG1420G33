@@ -2,8 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -22,7 +20,7 @@
             <Label styleClass="info-label" text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
             <Text fx:id="studentNameText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             
-            <Label styleClass="info-label" text="Student ID:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Label styleClass="info-label" text="Faculty ID:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
             <Text fx:id="studentIdText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             
             <Label styleClass="info-label" text="Degree Level:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
@@ -45,35 +43,5 @@
             <Insets left="45.0" />
          </VBox.margin>
         </GridPane>
-    </VBox>
-
-    <!-- Academic Progress Section -->
-    <VBox spacing="10" styleClass="progress-section">
-        <Label fx:id="progressLabel" styleClass="progress-text" />
-    </VBox>
-
-    <!-- Current Courses Section -->
-    <VBox spacing="10" styleClass="courses-section">
-        <Label styleClass="section-header" text="Current Courses" />
-        <TableView fx:id="coursesTable" prefHeight="150" styleClass="data-table">
-            <columns>
-                <TableColumn fx:id="courseCodeColumn" text="Course Code" />
-                <TableColumn fx:id="courseNameColumn" text="Course Name" />
-                <TableColumn fx:id="instructorColumn" text="Instructor" />
-                <TableColumn fx:id="scheduleColumn" text="Schedule" />
-            </columns>
-        </TableView>
-    </VBox>
-
-    <!-- Registered Events Section -->
-    <VBox spacing="10" styleClass="events-section">
-        <Label styleClass="section-header" text="Registered Events" />
-        <TableView fx:id="eventsTable" prefHeight="150" styleClass="data-table">
-            <columns>
-                <TableColumn fx:id="eventNameColumn" text="Event Name" />
-                <TableColumn fx:id="eventDateColumn" text="Date" />
-                <TableColumn fx:id="eventLocationColumn" text="Location" />
-            </columns>
-        </TableView>
     </VBox>
 </VBox>
