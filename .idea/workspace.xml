@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="695edb3f-5990-4e7d-9437-02fba9d60a2e" name="Changes" comment="pull">
+    <list default="true" id="695edb3f-5990-4e7d-9437-02fba9d60a2e" name="Changes" comment="Homepage for users (student login). display student courses and information (wip).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ManagementSystem/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/CourseManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/CourseManagementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/ExcelFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/ExcelFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UMS_Data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UMS_Data.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,14 +26,14 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.MainApp.executor": "Run",
-    "Application.TestExcelReading.executor": "Run",
-    "JUnit.All in ENGG1420-Group33-Phase1.executor": "Run",
-    "git-widget-placeholder": "main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MainApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestExcelReading.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in ENGG1420-Group33-Phase1.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420" />
@@ -83,7 +79,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743457161310</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Homepage for users (student login). display student courses and information (wip).">
+      <option name="closed" value="true" />
+      <created>1743577498116</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743577498116</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -99,7 +103,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pull" />
-    <option name="LAST_COMMIT_MESSAGE" value="pull" />
+    <MESSAGE value="Homepage for users (student login). display student courses and information (wip)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Homepage for users (student login). display student courses and information (wip)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

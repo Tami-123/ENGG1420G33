@@ -9,10 +9,12 @@ public class Student extends User{
     protected String subjects;
     protected String thesisTitle;
     protected double progress;
+    protected String email;
+    protected String thesis;
 
 
     public Student(String id, String password, String username, String email, String address, String telephone,
-                   String academicLevel, String currentSem, String subjects, String thesisTitle, double progress) {
+                   String academicLevel, String currentSem, String subjects, String thesisTitle, double progress, String thesis) {
         super(id, password,username, "USER", email);
         this.address = address;
         this.telephone = telephone;
@@ -21,6 +23,8 @@ public class Student extends User{
         this.subjects = subjects;
         this.thesisTitle = thesisTitle;
         this.progress = progress * 100;
+        this.email = email;
+        this.thesis = thesis;
     }
 
     public String getAddress() {
@@ -77,6 +81,22 @@ public class Student extends User{
 
     public void setProgress(double progress) {
         this.progress = (double) (progress * 100);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getThesis() {
+        return thesis;
+    }
+
+    public void setThesis(String thesis) {
+        this.thesis = thesis;
     }
 
     @Override

@@ -94,8 +94,9 @@ public class UserDashboardViewController implements Initializable {
         currentSemText.setText(currentStudent.getCurrentSem());
         graduationDateText.setText(calculateGraduationDate());
         
-        progressBar.setProgress(currentStudent.getProgress() / 100 );
-        progressLabel.setText(currentStudent.getProgress()+ "% Complete");
+        // Set progress to 0%
+        progressBar.setProgress(0.0);
+        progressLabel.setText("0.0% Complete");
     }
 
     private String calculateGraduationDate() {
@@ -158,29 +159,9 @@ public class UserDashboardViewController implements Initializable {
         }
         
         // Split the subjects string into an array and clean each subject
-        // Convert all subjects to uppercase for consistent case-insensitive comparison
         String[] studentSubjects = studentSubjectsStr.split(",");
         for (int i = 0; i < studentSubjects.length; i++) {
             studentSubjects[i] = studentSubjects[i].trim().toUpperCase();
-        }
-        
-        // Print total number of available courses for debugging
-        System.out.println("Total Courses Available: " + excelReader.courseList.size());
-        
-        // Debug: Print all available courses with their details
-        System.out.println("\nAvailable Courses:");
-        for (Course course : excelReader.courseList) {
-            System.out.println("- " + course.getCourseName() + 
-                             "\n  Course Code: '" + course.getCourseCode() + "'" +
-                             "\n  Subject Code: '" + course.getCode() + "'");
-        }
-        
-        // Debug: Print the student's subjects after cleaning
-        System.out.println("\nStudent's Subjects:");
-        for (String subject : studentSubjects) {
-            if (!subject.trim().isEmpty()) {
-                System.out.println("- '" + subject + "'");
-            }
         }
         
         // Create a set to keep track of processed subjects to avoid duplicates
@@ -188,12 +169,10 @@ public class UserDashboardViewController implements Initializable {
         
         // First pass: Match existing courses with student's subjects
         for (Course course : excelReader.courseList) {
-            // Convert course's subject code to uppercase for consistent comparison
-            String subjectCode = course.getCode().trim().toUpperCase();
+            String courseSubjectCode = course.getCode().trim().toUpperCase();
             System.out.println("\nChecking course: " + course.getCourseName());
-            System.out.println("Subject code: '" + subjectCode + "'");
+            System.out.println("Subject code: '" + courseSubjectCode + "'");
             
-            boolean courseMatched = false;
             // Check each of the student's subjects
             for (String studentSubject : studentSubjects) {
                 if (studentSubject.isEmpty()) continue;
@@ -201,86 +180,44 @@ public class UserDashboardViewController implements Initializable {
                 System.out.println("Comparing with student subject: '" + studentSubject + "'");
                 
                 // Check for exact match (after converting to uppercase)
-                if (subjectCode.equals(studentSubject)) {
+                if (courseSubjectCode.equals(studentSubject)) {
                     // Only add the course if we haven't processed this subject code before
-                    if (!processedSubjects.contains(subjectCode)) {
-                        System.out.println("✓ Exact match found! Adding course: " + course.getCourseName());
-                        // Create a new course entry using the student's subject code
-                        Course matchedCourse = new Course(
-                            studentSubject,  // Use student's subject code as course code
-                            course.getCourseName(),
-                            studentSubject,
-                            course.getSectionNumber(),
-                            Double.parseDouble(course.getCapacity()),  // Convert String capacity to double
-                            course.getLectureTime(),
-                            course.getFinalExamDateTime(),
-                            course.getLocation(),
-                            course.getTeacherName()
-                        );
-                        enrolledCourses.add(matchedCourse);
-                        processedSubjects.add(subjectCode);  // Mark this subject as processed
-                        courseMatched = true;
+                    if (!processedSubjects.contains(courseSubjectCode)) {
+                        System.out.println("✓ Match found! Adding course: " + course.getCourseName());
+                        enrolledCourses.add(course);
+                        processedSubjects.add(courseSubjectCode);
                         break;
                     }
                 }
             }
-            
-            if (!courseMatched) {
-                System.out.println("No match found for this course");
-            }
         }
         
-        // Second pass: Handle subjects that don't have corresponding courses
+        // Second pass: Create basic entries for subjects without corresponding courses
         for (String studentSubject : studentSubjects) {
             if (studentSubject.trim().isEmpty()) continue;
             
-            // Check if we already have a course for this subject
-            boolean hasCorrespondingCourse = false;
-            for (Course course : enrolledCourses) {
-                if (course.getCode().trim().toUpperCase().equals(studentSubject)) {
-                    hasCorrespondingCourse = true;
-                    break;
-                }
-            }
+            // Skip if we already have a course for this subject
+            if (processedSubjects.contains(studentSubject)) continue;
             
-            // If no course exists for this subject, look for it in the subject list
-            if (!hasCorrespondingCourse) {
-                for (Subject subject : excelReader.subjectList) {
-                    if (subject.getCode().trim().toUpperCase().equals(studentSubject)) {
-                        System.out.println("\nFound subject without course: " + subject.getName() + " (" + subject.getCode() + ")");
-                        // Create a basic course entry with minimal information
-                        Course basicCourse = new Course(
-                            studentSubject,  // Use student's subject code as course code
-                            subject.getName(),  // Use subject name as course name
-                            studentSubject,  // Use student's subject code
-                            "N/A",  // No section number available
-                            0.0,    // No capacity information
-                            "N/A",  // No lecture time available
-                            "N/A",  // No final exam date available
-                            "N/A",  // No location available
-                            "N/A"   // No teacher information available
-                        );
-                        enrolledCourses.add(basicCourse);
-                        processedSubjects.add(studentSubject);  // Mark this subject as processed
-                        System.out.println("✓ Added basic course entry for: " + subject.getName());
-                        break;
-                    }
-                }
-            }
+            // Create a basic course entry for subjects without corresponding courses
+            Course basicCourse = new Course(
+                studentSubject,  // Use subject code as course code
+                "N/A",          // No course name available
+                studentSubject, // Use subject code
+                "N/A",         // No section number
+                0.0,           // Default capacity
+                "N/A",         // No lecture time
+                "N/A",         // No final exam time
+                "N/A",         // No location
+                "N/A"          // No instructor
+            );
+            enrolledCourses.add(basicCourse);
+            processedSubjects.add(studentSubject);
         }
         
-        // Print final results and any warnings
-        System.out.println("\nTotal enrolled courses: " + enrolledCourses.size());
-        if (enrolledCourses.isEmpty()) {
-            System.out.println("WARNING: No courses were matched!");
-            System.out.println("This could be because:");
-            System.out.println("1. The student's subjects are not in the correct format");
-            System.out.println("2. The course subject codes don't match the student's subjects");
-            System.out.println("3. There might be extra spaces or case differences");
-        }
-        
-        // Update the courses table with the final list of courses
+        // Set the items in the table
         coursesTable.setItems(enrolledCourses);
+        System.out.println("Total courses loaded: " + enrolledCourses.size());
     }
 
     private void loadEventsTable() {
