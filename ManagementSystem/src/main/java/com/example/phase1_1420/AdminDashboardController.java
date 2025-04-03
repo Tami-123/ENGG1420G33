@@ -1,6 +1,7 @@
 package com.example.phase1_1420;
 
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -60,7 +61,7 @@ public class AdminDashboardController {
     private void handleCourses() { loadContent("course-management-view.fxml"); }
 
     @FXML
-    private void handleStudents() { loadContent("admin-students-view.fxml"); }
+    private void handleStudents(ActionEvent event) { loadContent("admin-students-view.fxml"); }
 
     @FXML
     private void handleFaculty() { loadContent("admin-faculty-view.fxml"); }
