@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.phase1_1420.EventManagementController"
+      spacing="10"
+      style="-fx-background-color: #f4f4f4;">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- List View (Default View) -->
+    <VBox fx:id="listView" spacing="10">
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Event List" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Button fx:id="calendarButton" text="View Calendar" onAction="#handleViewCalendar"/>
+        </HBox>
+
+        <!-- Filter Controls -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Filter by:"/>
+            <ComboBox fx:id="eventTypeFilter" promptText="Event Type" prefWidth="150"/>
+            <ComboBox fx:id="dateFilter" promptText="Date Range" prefWidth="150"/>
+            <Button fx:id="applyFilterButton" text="Apply Filters" onAction="#applyFilters"/>
+            <Button fx:id="clearFilterButton" text="Clear Filters" onAction="#clearFilters"/>
+        </HBox>
+
+        <!-- Events Table -->
+        <TableView fx:id="eventsTable" prefHeight="300">
+            <columns>
+                <TableColumn fx:id="eventNameColumn" text="Event Name" prefWidth="150"/>
+                <TableColumn fx:id="eventDateColumn" text="Date" prefWidth="100"/>
+                <TableColumn fx:id="eventTimeColumn" text="Time" prefWidth="100"/>
+                <TableColumn fx:id="eventLocationColumn" text="Location" prefWidth="150"/>
+                <TableColumn fx:id="eventTypeColumn" text="Type" prefWidth="100"/>
+                <TableColumn fx:id="eventCapacityColumn" text="Capacity" prefWidth="80"/>
+            </columns>
+        </TableView>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button fx:id="viewEventDetailsButton" text="View Event Details" onAction="#handleViewEventDetails"/>
+        </HBox>
+    </VBox>
+
+    <!-- Calendar View -->
+    <VBox fx:id="calendarView" spacing="10" visible="false" managed="false">
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Event Calendar" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Button fx:id="backToListButton" text="Back to List" onAction="#handleBackToList"/>
+        </HBox>
+
+        <!-- Calendar Grid -->
+        <GridPane fx:id="calendarGrid" hgap="5" vgap="5" style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-width: 1;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            
+            <!-- Day headers -->
+            <Label text="Sun" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+            <Label text="Mon" GridPane.rowIndex="0" GridPane.columnIndex="1" style="-fx-font-weight: bold;"/>
+            <Label text="Tue" GridPane.rowIndex="0" GridPane.columnIndex="2" style="-fx-font-weight: bold;"/>
+            <Label text="Wed" GridPane.rowIndex="0" GridPane.columnIndex="3" style="-fx-font-weight: bold;"/>
+            <Label text="Thu" GridPane.rowIndex="0" GridPane.columnIndex="4" style="-fx-font-weight: bold;"/>
+            <Label text="Fri" GridPane.rowIndex="0" GridPane.columnIndex="5" style="-fx-font-weight: bold;"/>
+            <Label text="Sat" GridPane.rowIndex="0" GridPane.columnIndex="6" style="-fx-font-weight: bold;"/>
+            
+            <!-- Calendar cells will be populated by controller -->
+        </GridPane>
+
+        <!-- Month Navigation -->
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="prevMonthButton" text="&lt;" onAction="#handlePrevMonth"/>
+            <Label fx:id="monthYearLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Button fx:id="nextMonthButton" text="&gt;" onAction="#handleNextMonth"/>
+        </HBox>
+    </VBox>
+
+    <!-- Event Details View -->
+    <VBox fx:id="eventDetailsView" spacing="10" visible="false" managed="false">
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Event Details" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Button fx:id="backButton" text="Back to List" onAction="#handleBackToList"/>
+        </HBox>
+
+        <!-- Event Details -->
+        <VBox spacing="10" style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-width: 1;">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            
+            <GridPane hgap="10" vgap="10">
+                <Label text="Event Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <Label fx:id="selectedEventNameText" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                
+                <Label text="Date &amp; Time:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <Label fx:id="selectedEventDateTimeText" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                
+                <Label text="Location:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <Label fx:id="selectedEventLocationText" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                
+                <Label text="Description:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <Label fx:id="selectedEventDescriptionText" GridPane.rowIndex="3" GridPane.columnIndex="1" wrapText="true"/>
+                
+                <Label text="Type:" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <Label fx:id="selectedEventTypeText" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                
+                <Label text="Capacity:" GridPane.rowIndex="5" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <Label fx:id="selectedEventCapacityText" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                
+                <Label text="Cost:" GridPane.rowIndex="6" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <Label fx:id="selectedEventCostText" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            </GridPane>
+            
+            <!-- Registration Controls -->
+            <VBox spacing="10" style="-fx-background-color: #f9f9f9; -fx-border-color: #ddd; -fx-border-width: 1;">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                
+                <Label text="Your Registration Status:" style="-fx-font-weight: bold;"/>
+                <Label fx:id="registrationStatusText" style="-fx-text-fill: #4CAF50;"/>
+                
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="registerButton" text="Register" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" onAction="#registerForEvent"/>
+                    <Button fx:id="cancelRegistrationButton" text="Cancel Registration" style="-fx-background-color: #f44336; -fx-text-fill: white;" onAction="#cancelRegistration"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </VBox>
+</VBox> 

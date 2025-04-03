@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.ListView?>
 <VBox spacing="15" styleClass="dashboard-content" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.FacultyDashboardViewController">
 
     <!-- Student Information Section -->
@@ -29,8 +28,6 @@
             
             <Label styleClass="info-label" text="Courses Offered:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
             <Text fx:id="CoursesOffText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-
          <columnConstraints>
             <ColumnConstraints />
             <ColumnConstraints />
@@ -47,6 +44,4 @@
          </VBox.margin>
         </GridPane>
     </VBox>
-    <Label styleClass="info-label" text="Courses Teaching:" />
-    <ListView fx:id="facultyCoursesList" prefHeight="150" />
 </VBox>

@@ -16,9 +16,15 @@ public class ExcelFile {
     public List<Subject> subjectList = new ArrayList<>();
     public List<Course> courseList = new ArrayList<>();
 
+    // Common file path for all Excel operations
+    private static final String EXCEL_FILE_PATH = "ManagementSystem/src/main/resources/UMS_Data.xlsx";
+
     //Write the subject's back to the excel file after edit in GUI
     public void writeSubjectsToExcel(List<Subject> updatedSubjects) throws IOException {
-        File file = new File("src/main/resources/UMS_Data.xlsx");
+        File file = new File(EXCEL_FILE_PATH);
+        if (!file.exists()) {
+            throw new IOException("Excel file not found at: " + file.getAbsolutePath());
+        }
         FileInputStream fis = new FileInputStream(file);
         Workbook wb = WorkbookFactory.create(fis);
         Sheet sheet = wb.getSheetAt(0); // Subjects in sheet 0
@@ -36,7 +42,6 @@ public class ExcelFile {
             Cell codeCell = row.createCell(0);
             Cell nameCell = row.createCell(1);
 
-
             codeCell.setCellValue(subject.getCode());
             nameCell.setCellValue(subject.getName());
         }
@@ -52,10 +57,13 @@ public class ExcelFile {
 
     //Write Courses to excel
     public void writeCoursesToExcel(List<Course> updatedCourses) throws IOException {
-        File file = new File("UMS_Data.xlsx");
+        File file = new File(EXCEL_FILE_PATH);
+        if (!file.exists()) {
+            throw new IOException("Excel file not found at: " + file.getAbsolutePath());
+        }
         FileInputStream fis = new FileInputStream(file);
         Workbook wb = WorkbookFactory.create(fis);
-        Sheet sheet = wb.getSheetAt(1); // Subjects in sheet 0
+        Sheet sheet = wb.getSheetAt(1); // Courses in sheet 1
 
         // Clear old data (except header)
         for (int i = sheet.getLastRowNum(); i > 0; i--) {
@@ -63,7 +71,7 @@ public class ExcelFile {
             if (row != null) sheet.removeRow(row);
         }
 
-        // Write updated subject list starting from row 1
+        // Write updated course list starting from row 1
         int rowIndex = 1;
         for (Course course : updatedCourses) {
             Row row = sheet.createRow(rowIndex++);
@@ -100,10 +108,13 @@ public class ExcelFile {
 
     //Write Students to excel
     public void writeStudentsToExcel(List<Student> updatedStudents) throws IOException {
-        File file = new File("UMS_Data.xlsx");
+        File file = new File(EXCEL_FILE_PATH);
+        if (!file.exists()) {
+            throw new IOException("Excel file not found at: " + file.getAbsolutePath());
+        }
         FileInputStream fis = new FileInputStream(file);
         Workbook wb = WorkbookFactory.create(fis);
-        Sheet sheet = wb.getSheetAt(2); // Subjects in sheet 0
+        Sheet sheet = wb.getSheetAt(2); // Students in sheet 2
 
         // Clear old data (except header)
         for (int i = sheet.getLastRowNum(); i > 0; i--) {
@@ -111,7 +122,7 @@ public class ExcelFile {
             if (row != null) sheet.removeRow(row);
         }
 
-        // Write updated subject list starting from row 1
+        // Write updated student list starting from row 1
         int rowIndex = 1;
         for (Student student : updatedStudents) {
             Row row = sheet.createRow(rowIndex++);
@@ -141,7 +152,6 @@ public class ExcelFile {
             thesisTitleCell.setCellValue(student.getThesisTitle());
             progressCell.setCellValue(student.getProgress());
             passCell.setCellValue(student.getPassword());
-
         }
 
         fis.close();
@@ -153,14 +163,15 @@ public class ExcelFile {
         wb.close();
     }
 
-
-
     //Write Faculty to excel
     public void writeFacultyToExcel(List<Faculty> updatedFaculty) throws IOException {
-        File file = new File("UMS_Data.xlsx");
+        File file = new File(EXCEL_FILE_PATH);
+        if (!file.exists()) {
+            throw new IOException("Excel file not found at: " + file.getAbsolutePath());
+        }
         FileInputStream fis = new FileInputStream(file);
         Workbook wb = WorkbookFactory.create(fis);
-        Sheet sheet = wb.getSheetAt(3);
+        Sheet sheet = wb.getSheetAt(3); // Faculty in sheet 3
 
         // Clear old data (except header)
         for (int i = sheet.getLastRowNum(); i > 0; i--) {
@@ -168,7 +179,7 @@ public class ExcelFile {
             if (row != null) sheet.removeRow(row);
         }
 
-        // Write updated subject list starting from row 1
+        // Write updated faculty list starting from row 1
         int rowIndex = 1;
         for (Faculty faculty : updatedFaculty) {
             Row row = sheet.createRow(rowIndex++);
@@ -190,7 +201,6 @@ public class ExcelFile {
             officeCell.setCellValue(faculty.getOfficeLocation());
             coursesCell.setCellValue(faculty.getCoursesOffered());
             passCell.setCellValue(faculty.getPassword());
-
         }
 
         fis.close();
@@ -204,10 +214,13 @@ public class ExcelFile {
 
     //Write the Event's back to the excel file after edit in GUI
     public void writeEventsToExcel(List<Event> updatedEvents) throws IOException {
-        File file = new File("UMS_Data.xlsx");
+        File file = new File(EXCEL_FILE_PATH);
+        if (!file.exists()) {
+            throw new IOException("Excel file not found at: " + file.getAbsolutePath());
+        }
         FileInputStream fis = new FileInputStream(file);
         Workbook wb = WorkbookFactory.create(fis);
-        Sheet sheet = wb.getSheetAt(4); // Subjects in sheet 0
+        Sheet sheet = wb.getSheetAt(4); // Events in sheet 4
 
         // Clear old data (except header)
         for (int i = sheet.getLastRowNum(); i > 0; i--) {
@@ -215,7 +228,7 @@ public class ExcelFile {
             if (row != null) sheet.removeRow(row);
         }
 
-        // Write updated subject list starting from row 1
+        // Write updated event list starting from row 1
         int rowIndex = 1;
         for (Event event : updatedEvents) {
             Row row = sheet.createRow(rowIndex++);
@@ -229,16 +242,18 @@ public class ExcelFile {
             Cell costCell = row.createCell(6);
             Cell photoCell = row.createCell(7);
             Cell registeredStudentsCell = row.createCell(8);
+            Cell typeCell = row.createCell(9);
 
             idCell.setCellValue(event.getEventID());
-            nameCell.setCellValue(event.getEventID());
+            nameCell.setCellValue(event.getEventName());
             descriptionCell.setCellValue(event.getDescription());
             locationCell.setCellValue(event.getLocation());
-            dateTimeCell.setCellValue(event.getDateTime()); // Assumed as string or formatted
+            dateTimeCell.setCellValue(event.getDateTime());
             capacityCell.setCellValue(event.getCapacity());
             costCell.setCellValue(event.getCost());
-            photoCell.setCellValue("default"); //PHOTO
+            photoCell.setCellValue("default");
             registeredStudentsCell.setCellValue(event.getRegisteredStudents());
+            typeCell.setCellValue(event.getType());
         }
 
         fis.close();
@@ -252,16 +267,17 @@ public class ExcelFile {
 
     //Read all new data, from all sheets whenever reading
     public void ReadingNameExcelFile() throws IOException {
-        File file = new File("/Users/keanurangayah/Downloads/JAVALAbs/ENGG1420G33/ManagementSystem/src/main/java/com/example/phase1_1420/UMS_Data.xlsx");
+        File file = new File(EXCEL_FILE_PATH);
+        if (!file.exists()) {
+            throw new IOException("Excel file not found at: " + file.getAbsolutePath());
+        }
         FileInputStream fis = new FileInputStream(file);
         Workbook wb = WorkbookFactory.create(fis);
-
 
         // Finding Students In sheet 2
         Sheet sheet = wb.getSheetAt(2);
         studentList.clear();
         for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-
             Row row = sheet.getRow(i);
             if (row == null) continue;
 
@@ -276,7 +292,6 @@ public class ExcelFile {
             Cell thesisTitleCell = row.getCell(9, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
             Cell progressCell = row.getCell(10, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
             Cell passCell = row.getCell(11, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
-
 
             if (idCell != null) {
                 System.out.println("\nReading student from Excel:");
@@ -298,16 +313,14 @@ public class ExcelFile {
                         telephoneCell.toString(), academicLevelCell.toString(),semesterCell.toString(), subjectsCell.toString(), thesisTitleCell.toString(), progress, thesisTitleCell.toString());
                 studentList.add(student);
                 
-                // Debug: Print the student's subjects after creation
                 System.out.println("- Processed Subjects: '" + student.getSubjects() + "'");
             }
         }
 
-        // Finding Students In sheet 2
+        // Finding Faculty In sheet 3
         sheet = wb.getSheetAt(3);
         facultyList.clear();
         for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-
             Row row = sheet.getRow(i);
             if (row == null) continue;
 
@@ -320,7 +333,6 @@ public class ExcelFile {
             Cell coursesCell = row.getCell(6, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
             Cell passCell = row.getCell(7, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
 
-
             if (idCell != null) {
                 Faculty faculty = new Faculty(idCell.toString(),passCell.toString(),userCell.toString(),emailCell.toString(), degreeCell.toString()
                 , researchCell.toString(), officeCell.toString(), coursesCell.toString());
@@ -328,10 +340,10 @@ public class ExcelFile {
             }
         }
 
+        // Finding Events In sheet 4
         sheet = wb.getSheetAt(4);
         eventList.clear();
         for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-
             Row row = sheet.getRow(i);
             if (row == null) continue;
 
@@ -343,25 +355,34 @@ public class ExcelFile {
             Cell capacityCell = row.getCell(5, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
             Cell costCell = row.getCell(6, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
             Cell registeredStudentsCell = row.getCell(8, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
+            Cell typeCell = row.getCell(9, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
 
             if (idCell != null) {
-                Event event = new Event(idCell.toString(), nameCell.toString(), descriptionCell.toString(), locationCell.toString(),
-                        dateTimeCell.toString(),Double.parseDouble(capacityCell.toString()), costCell.toString(), registeredStudentsCell.toString());
+                // Provide default values for null cells
+                String eventType = typeCell != null ? typeCell.toString() : "General";
+                String eventName = nameCell != null ? nameCell.toString() : "Unnamed Event";
+                String eventDescription = descriptionCell != null ? descriptionCell.toString() : "";
+                String eventLocation = locationCell != null ? locationCell.toString() : "TBA";
+                String eventDateTime = dateTimeCell != null ? dateTimeCell.toString() : "TBA";
+                double eventCapacity = capacityCell != null ? Double.parseDouble(capacityCell.toString()) : 0.0;
+                String eventCost = costCell != null ? costCell.toString() : "Free";
+                String eventRegisteredStudents = registeredStudentsCell != null ? registeredStudentsCell.toString() : "";
+
+                Event event = new Event(idCell.toString(), eventName, eventDescription, eventLocation,
+                        eventDateTime, eventCapacity, eventCost, eventRegisteredStudents, eventType);
                 eventList.add(event);
             }
         }
 
+        // Finding Subjects In sheet 0
         sheet = wb.getSheetAt(0);
         subjectList.clear();
         for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-
             Row row = sheet.getRow(i);
             if (row == null) continue;
 
-            //Wont enter Blank Cells into the object
             Cell idCell = row.getCell(0, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
             Cell passCell = row.getCell(1, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
-
 
             if (idCell != null) {
                 Subject subject = new Subject(idCell.toString(),passCell.toString());
@@ -369,15 +390,14 @@ public class ExcelFile {
             }
         }
 
+        // Finding Courses In sheet 1
         sheet = wb.getSheetAt(1);
         courseList.clear();
         System.out.println("Reading courses from Excel...");
         for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-
             Row row = sheet.getRow(i);
             if (row == null) continue;
 
-            //Wont enter Blank Cells into the object
             Cell courseCodecell = row.getCell(0, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
             Cell courseNameCell = row.getCell(1, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
             Cell subjectCodeCell = row.getCell(2, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
@@ -387,7 +407,6 @@ public class ExcelFile {
             Cell finalTimeCell = row.getCell(6, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
             Cell locationCell = row.getCell(7, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
             Cell teacherCell = row.getCell(8, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
-
 
             if (courseCodecell != null) {
                 System.out.println("Found course: " + courseNameCell.toString() + " with subject code: " + subjectCodeCell.toString());

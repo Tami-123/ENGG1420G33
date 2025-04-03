@@ -1,0 +1,475 @@
+Index: ManagementSystem/src/main/resources/com/example/phase1_1420/faculty-dashboard-view.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.Label?>\n<?import javafx.scene.layout.ColumnConstraints?>\n<?import javafx.scene.layout.GridPane?>\n<?import javafx.scene.layout.RowConstraints?>\n<?import javafx.scene.layout.VBox?>\n<?import javafx.scene.text.Text?>\n\n<VBox spacing=\"15\" styleClass=\"dashboard-content\" xmlns=\"http://javafx.com/javafx/23.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.phase1_1420.FacultyDashboardViewController\">\n\n    <!-- Student Information Section -->\n    <VBox spacing=\"10\" styleClass=\"info-section\">\n        <Label styleClass=\"section-header\" text=\"Faculty Information\">\n         <padding>\n            <Insets left=\"45.0\" />\n         </padding></Label>\n        <GridPane hgap=\"10\" vgap=\"10\">\n            <Label styleClass=\"info-label\" text=\"Name:\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"0\" />\n            <Text fx:id=\"studentNameText\" styleClass=\"info-text\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"0\" />\n            \n            <Label styleClass=\"info-label\" text=\"Faculty ID:\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"1\" />\n            <Text fx:id=\"studentIdText\" styleClass=\"info-text\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"1\" />\n            \n            <Label styleClass=\"info-label\" text=\"Degree Level:\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"2\" />\n            <Text fx:id=\"DegreeLevelText\" styleClass=\"info-text\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"2\" />\n            \n            <Label styleClass=\"info-label\" text=\"Courses Offered:\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"3\" />\n            <Text fx:id=\"CoursesOffText\" styleClass=\"info-text\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"3\" />\n         <columnConstraints>\n            <ColumnConstraints />\n            <ColumnConstraints />\n         </columnConstraints>\n         <rowConstraints>\n            <RowConstraints />\n            <RowConstraints />\n            <RowConstraints />\n            <RowConstraints />\n            <RowConstraints />\n         </rowConstraints>\n         <VBox.margin>\n            <Insets left=\"45.0\" />\n         </VBox.margin>\n        </GridPane>\n    </VBox>\n</VBox>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ManagementSystem/src/main/resources/com/example/phase1_1420/faculty-dashboard-view.fxml b/ManagementSystem/src/main/resources/com/example/phase1_1420/faculty-dashboard-view.fxml
+--- a/ManagementSystem/src/main/resources/com/example/phase1_1420/faculty-dashboard-view.fxml	(revision 57e6c3e7dd3b78588ca9161c8c9193fb57c41ab0)
++++ b/ManagementSystem/src/main/resources/com/example/phase1_1420/faculty-dashboard-view.fxml	(date 1743641981443)
+@@ -1,47 +1,76 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+ <?import javafx.geometry.Insets?>
+-<?import javafx.scene.control.Label?>
+-<?import javafx.scene.layout.ColumnConstraints?>
+-<?import javafx.scene.layout.GridPane?>
+-<?import javafx.scene.layout.RowConstraints?>
+-<?import javafx.scene.layout.VBox?>
++<?import javafx.scene.control.*?>
++<?import javafx.scene.layout.*?>
+ <?import javafx.scene.text.Text?>
+ 
+-<VBox spacing="15" styleClass="dashboard-content" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.FacultyDashboardViewController">
+-
+-    <!-- Student Information Section -->
+-    <VBox spacing="10" styleClass="info-section">
+-        <Label styleClass="section-header" text="Faculty Information">
+-         <padding>
+-            <Insets left="45.0" />
+-         </padding></Label>
+-        <GridPane hgap="10" vgap="10">
+-            <Label styleClass="info-label" text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+-            <Text fx:id="studentNameText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="0" />
++<VBox spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase1_1420.FacultyDashboardViewController">
++    <padding>
++        <Insets bottom="10" left="10" right="10" top="10" />
++    </padding>
++
++    <!-- Faculty Information Section -->
++    <VBox spacing="5" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
++        <Text style="-fx-font-size: 20; -fx-font-weight: bold;" text="Faculty Information" />
++        <GridPane hgap="10" vgap="5">
++            <Text text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
++            <Text fx:id="facultyNameText" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+             
+-            <Label styleClass="info-label" text="Faculty ID:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+-            <Text fx:id="studentIdText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="1" />
++            <Text text="Faculty ID:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
++            <Text fx:id="facultyIdText" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+             
+-            <Label styleClass="info-label" text="Degree Level:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+-            <Text fx:id="DegreeLevelText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="2" />
++            <Text text="Degree:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
++            <Text fx:id="degreeText" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+             
+-            <Label styleClass="info-label" text="Courses Offered:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+-            <Text fx:id="CoursesOffText" styleClass="info-text" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+-         <columnConstraints>
+-            <ColumnConstraints />
+-            <ColumnConstraints />
+-         </columnConstraints>
+-         <rowConstraints>
+-            <RowConstraints />
+-            <RowConstraints />
+-            <RowConstraints />
+-            <RowConstraints />
+-            <RowConstraints />
+-         </rowConstraints>
+-         <VBox.margin>
+-            <Insets left="45.0" />
+-         </VBox.margin>
++            <Text text="Research Interest:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
++            <Text fx:id="researchInterestText" GridPane.rowIndex="3" GridPane.columnIndex="1" />
++            
++            <Text text="Office Location:" GridPane.rowIndex="4" GridPane.columnIndex="0" />
++            <Text fx:id="officeLocationText" GridPane.rowIndex="4" GridPane.columnIndex="1" />
++            
++            <Text text="Email:" GridPane.rowIndex="5" GridPane.columnIndex="0" />
++            <Text fx:id="emailText" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+         </GridPane>
+     </VBox>
++
++    <!-- Courses Section -->
++    <VBox spacing="5">
++        <Text style="-fx-font-size: 20; -fx-font-weight: bold;" text="Courses Teaching" />
++        <TableView fx:id="coursesTable">
++            <columns>
++                <TableColumn fx:id="courseCodeColumn" prefWidth="100" text="Course Code" />
++                <TableColumn fx:id="courseNameColumn" prefWidth="200" text="Course Name" />
++                <TableColumn fx:id="scheduleColumn" prefWidth="150" text="Schedule" />
++                <TableColumn fx:id="locationColumn" prefWidth="150" text="Location" />
++                <TableColumn fx:id="enrollmentColumn" prefWidth="100" text="Enrollment" />
++            </columns>
++        </TableView>
++    </VBox>
++
++    <!-- Upcoming Schedule Section -->
++    <VBox spacing="5">
++        <Text style="-fx-font-size: 20; -fx-font-weight: bold;" text="Upcoming Schedule" />
++        <TableView fx:id="scheduleTable">
++            <columns>
++                <TableColumn fx:id="dateColumn" prefWidth="150" text="Date" />
++                <TableColumn fx:id="timeColumn" prefWidth="150" text="Time" />
++                <TableColumn fx:id="eventColumn" prefWidth="200" text="Event" />
++                <TableColumn fx:id="locationColumn" prefWidth="150" text="Location" />
++            </columns>
++        </TableView>
++    </VBox>
++
++    <!-- Related Events Section -->
++    <VBox spacing="5">
++        <Text style="-fx-font-size: 20; -fx-font-weight: bold;" text="Related Events" />
++        <TableView fx:id="eventsTable">
++            <columns>
++                <TableColumn fx:id="eventNameColumn" prefWidth="200" text="Event Name" />
++                <TableColumn fx:id="eventDateColumn" prefWidth="150" text="Date" />
++                <TableColumn fx:id="eventLocationColumn" prefWidth="150" text="Location" />
++                <TableColumn fx:id="eventTypeColumn" prefWidth="100" text="Type" />
++            </columns>
++        </TableView>
++    </VBox>
+ </VBox>
+Index: ManagementSystem/src/main/java/com/example/phase1_1420/FacultyDashboardViewController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.phase1_1420;\n\nimport javafx.beans.property.SimpleStringProperty;\nimport javafx.collections.FXCollections;\nimport javafx.collections.ObservableList;\nimport javafx.fxml.FXML;\nimport javafx.fxml.Initializable;\nimport javafx.scene.control.Label;\nimport javafx.scene.control.TableColumn;\nimport javafx.scene.control.TableView;\nimport javafx.scene.text.Text;\n\nimport java.net.URL;\nimport java.time.LocalDate;\nimport java.time.format.DateTimeFormatter;\nimport java.util.ResourceBundle;\n\npublic class FacultyDashboardViewController implements Initializable {\n    @FXML private Text studentNameText;\n    @FXML private Text studentIdText;\n    @FXML private Text DegreeLevelText;\n    @FXML private Text CoursesOffText;\n\n    private final ExcelFile excelReader = new ExcelFile();\n    private Faculty currentFaculty;\n\n    @Override\n    public void initialize(URL location, ResourceBundle resources) {\n        try {\n            System.out.println(\"\\n=== Initializing UserDashboardViewController ===\");\n            \n            // Load data from Excel\n            excelReader.ReadingNameExcelFile();\n            \n            // Get current student from UserDatabase\n            currentFaculty = (Faculty) UserDatabase.CurrentUser;\n            System.out.println(\"Current Student:\");\n            System.out.println(\"- ID: \" + currentFaculty.getId());\n            System.out.println(\"- Name: \" + currentFaculty.getUsername());\n            System.out.println(\"- Degree Level: \" + currentFaculty.getDegree());\n            System.out.println(\"- Courses Offered: \" + currentFaculty.getCoursesOffered());\n\n            \n            // Update UI with student information\n            updateStudentInfo();\n\n        } catch (Exception e) {\n            System.err.println(\"Error in initialize: \" + e.getMessage());\n            e.printStackTrace();\n        }\n    }\n\n    private void updateStudentInfo() {\n        studentNameText.setText(currentFaculty.getUsername());\n        studentIdText.setText(currentFaculty.getId());\n        DegreeLevelText.setText(currentFaculty.getDegree());\n        CoursesOffText.setText(currentFaculty.getCoursesOffered());\n\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ManagementSystem/src/main/java/com/example/phase1_1420/FacultyDashboardViewController.java b/ManagementSystem/src/main/java/com/example/phase1_1420/FacultyDashboardViewController.java
+--- a/ManagementSystem/src/main/java/com/example/phase1_1420/FacultyDashboardViewController.java	(revision 57e6c3e7dd3b78588ca9161c8c9193fb57c41ab0)
++++ b/ManagementSystem/src/main/java/com/example/phase1_1420/FacultyDashboardViewController.java	(date 1743642027404)
+@@ -14,12 +14,36 @@
+ import java.time.LocalDate;
+ import java.time.format.DateTimeFormatter;
+ import java.util.ResourceBundle;
++import java.time.LocalDateTime;
++import java.util.ArrayList;
++import java.util.List;
+ 
+ public class FacultyDashboardViewController implements Initializable {
+-    @FXML private Text studentNameText;
+-    @FXML private Text studentIdText;
+-    @FXML private Text DegreeLevelText;
+-    @FXML private Text CoursesOffText;
++    @FXML private Text facultyNameText;
++    @FXML private Text facultyIdText;
++    @FXML private Text degreeText;
++    @FXML private Text researchInterestText;
++    @FXML private Text officeLocationText;
++    @FXML private Text emailText;
++    
++    @FXML private TableView<Course> coursesTable;
++    @FXML private TableColumn<Course, String> courseCodeColumn;
++    @FXML private TableColumn<Course, String> courseNameColumn;
++    @FXML private TableColumn<Course, String> scheduleColumn;
++    @FXML private TableColumn<Course, String> locationColumn;
++    @FXML private TableColumn<Course, String> enrollmentColumn;
++    
++    @FXML private TableView<ScheduleItem> scheduleTable;
++    @FXML private TableColumn<ScheduleItem, String> dateColumn;
++    @FXML private TableColumn<ScheduleItem, String> timeColumn;
++    @FXML private TableColumn<ScheduleItem, String> eventColumn;
++    @FXML private TableColumn<ScheduleItem, String> scheduleLocationColumn;
++    
++    @FXML private TableView<Event> eventsTable;
++    @FXML private TableColumn<Event, String> eventNameColumn;
++    @FXML private TableColumn<Event, String> eventDateColumn;
++    @FXML private TableColumn<Event, String> eventLocationColumn;
++    @FXML private TableColumn<Event, String> eventTypeColumn;
+ 
+     private final ExcelFile excelReader = new ExcelFile();
+     private Faculty currentFaculty;
+@@ -27,35 +51,176 @@
+     @Override
+     public void initialize(URL location, ResourceBundle resources) {
+         try {
+-            System.out.println("\n=== Initializing UserDashboardViewController ===");
++            System.out.println("\n=== Initializing FacultyDashboardViewController ===");
+             
+             // Load data from Excel
+             excelReader.ReadingNameExcelFile();
+             
+-            // Get current student from UserDatabase
++            // Get current faculty from UserDatabase
+             currentFaculty = (Faculty) UserDatabase.CurrentUser;
+-            System.out.println("Current Student:");
++            System.out.println("Current Faculty:");
+             System.out.println("- ID: " + currentFaculty.getId());
+             System.out.println("- Name: " + currentFaculty.getUsername());
+-            System.out.println("- Degree Level: " + currentFaculty.getDegree());
+-            System.out.println("- Courses Offered: " + currentFaculty.getCoursesOffered());
+-
++            System.out.println("- Degree: " + currentFaculty.getDegree());
++            System.out.println("- Research Interest: " + currentFaculty.getResearchInterest());
++            
++            // Initialize table columns
++            initializeColumns();
+             
+-            // Update UI with student information
+-            updateStudentInfo();
+-
++            // Update UI with faculty information
++            updateFacultyInfo();
++            
++            // Load tables with data
++            loadCoursesTable();
++            loadScheduleTable();
++            loadEventsTable();
+         } catch (Exception e) {
+             System.err.println("Error in initialize: " + e.getMessage());
+             e.printStackTrace();
+         }
+     }
+ 
+-    private void updateStudentInfo() {
+-        studentNameText.setText(currentFaculty.getUsername());
+-        studentIdText.setText(currentFaculty.getId());
+-        DegreeLevelText.setText(currentFaculty.getDegree());
+-        CoursesOffText.setText(currentFaculty.getCoursesOffered());
++    private void initializeColumns() {
++        // Courses table
++        courseCodeColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getCourseCode()));
++        courseNameColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getCourseName()));
++        scheduleColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getLectureTime()));
++        locationColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getLocation()));
++        enrollmentColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(String.valueOf(cellData.getValue().getCapacity())));
+ 
++        // Schedule table
++        dateColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getDate()));
++        timeColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getTime()));
++        eventColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getEvent()));
++        scheduleLocationColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getLocation()));
++
++        // Events table
++        eventNameColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getEventName()));
++        eventDateColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getDateTime()));
++        eventLocationColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getLocation()));
++        eventTypeColumn.setCellValueFactory(cellData -> 
++            new SimpleStringProperty(cellData.getValue().getType()));
++    }
++
++    private void updateFacultyInfo() {
++        facultyNameText.setText(currentFaculty.getUsername());
++        facultyIdText.setText(currentFaculty.getId());
++        degreeText.setText(currentFaculty.getDegree());
++        researchInterestText.setText(currentFaculty.getResearchInterest());
++        officeLocationText.setText(currentFaculty.getOfficeLocation());
++        emailText.setText(currentFaculty.getEmail());
++    }
++
++    private void loadCoursesTable() {
++        ObservableList<Course> facultyCourses = FXCollections.observableArrayList();
++        String facultyName = currentFaculty.getUsername();
++        
++        for (Course course : excelReader.courseList) {
++            if (course.getTeacherName().equals(facultyName)) {
++                facultyCourses.add(course);
++            }
++        }
++        
++        coursesTable.setItems(facultyCourses);
++        System.out.println("Loaded " + facultyCourses.size() + " courses for faculty");
+     }
+ 
++    private void loadScheduleTable() {
++        ObservableList<ScheduleItem> scheduleItems = FXCollections.observableArrayList();
++        String facultyName = currentFaculty.getUsername();
++        
++        // Add regular class schedules
++        for (Course course : excelReader.courseList) {
++            if (course.getTeacherName().equals(facultyName)) {
++                ScheduleItem item = new ScheduleItem(
++                    course.getLectureTime(),
++                    course.getLocation(),
++                    course.getCourseName() + " - Lecture"
++                );
++                scheduleItems.add(item);
++            }
++        }
++        
++        // Add final exam schedules
++        for (Course course : excelReader.courseList) {
++            if (course.getTeacherName().equals(facultyName)) {
++                ScheduleItem item = new ScheduleItem(
++                    course.getFinalExamDateTime(),
++                    course.getLocation(),
++                    course.getCourseName() + " - Final Exam"
++                );
++                scheduleItems.add(item);
++            }
++        }
++        
++        scheduleTable.setItems(scheduleItems);
++        System.out.println("Loaded " + scheduleItems.size() + " schedule items");
++    }
++
++    private void loadEventsTable() {
++        ObservableList<Event> facultyEvents = FXCollections.observableArrayList();
++        String facultyName = currentFaculty.getUsername();
++        
++        // Add department meetings
++        facultyEvents.add(new Event(
++            "MEET001",  // eventID
++            "Department Meeting",  // eventName
++            "Monthly department meeting",  // description
++            "Department Conference Room",  // location
++            "2024-04-15 14:00",  // dateTime
++            20.0,  // capacity
++            "0",  // cost
++            "0",  // registeredStudents
++            "Meeting"  // type
++        ));
++        
++        // Add office hours
++        facultyEvents.add(new Event(
++            "OFF001",  // eventID
++            "Office Hours",  // eventName
++            "Regular office hours",  // description
++            currentFaculty.getOfficeLocation(),  // location
++            "2024-04-16 10:00",  // dateTime
++            1.0,  // capacity
++            "0",  // cost
++            "0",  // registeredStudents
++            "Office Hours"  // type
++        ));
++        
++        eventsTable.setItems(facultyEvents);
++        System.out.println("Loaded " + facultyEvents.size() + " events");
++    }
++
++    // Inner class for schedule items
++    private static class ScheduleItem {
++        private final String date;
++        private final String time;
++        private final String event;
++        private final String location;
++
++        public ScheduleItem(String dateTime, String location, String event) {
++            String[] parts = dateTime.split(" ");
++            this.date = parts[0];
++            this.time = parts[1];
++            this.location = location;
++            this.event = event;
++        }
++
++        public String getDate() { return date; }
++        public String getTime() { return time; }
++        public String getEvent() { return event; }
++        public String getLocation() { return location; }
++    }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"695edb3f-5990-4e7d-9437-02fba9d60a2e\" name=\"Changes\" comment=\"Homepage for users (student login). display student courses and information (wip).\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/CourseManagementController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/CourseManagementController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/ExcelFile.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/ExcelFile.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Student.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Student.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardViewController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardViewController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard-view.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard-view.fxml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ExportToHTMLSettings\">\n    <option name=\"OUTPUT_DIRECTORY\" value=\"$PROJECT_DIR$/exportToHTML\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Application.MainApp.executor&quot;: &quot;Run&quot;,\n    &quot;Application.TestExcelReading.executor&quot;: &quot;Run&quot;,\n    &quot;JUnit.All in ENGG1420-Group33-Phase1.executor&quot;: &quot;Run&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420\" />\n      <recent name=\"$PROJECT_DIR$/ManagementSystem/src/main/resources\" />\n      <recent name=\"$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Application.MainApp\">\n    <configuration name=\"MainApp\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.phase1_1420.MainApp\" />\n      <module name=\"ENGG1420-Group33-Phase1\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.example.phase1_1420.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"All in ENGG1420-Group33-Phase1\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"ENGG1420-Group33-Phase1\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"TEST_OBJECT\" value=\"package\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.MainApp\" />\n        <item itemvalue=\"JUnit.All in ENGG1420-Group33-Phase1\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"TaskManager\">\n    <task id=\"LOCAL-00001\" summary=\"pull\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1743457161310</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1743457161310</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Homepage for users (student login). display student courses and information (wip).\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1743577498116</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1743577498116</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"3\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"pull\" />\n    <MESSAGE value=\"Homepage for users (student login). display student courses and information (wip).\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Homepage for users (student login). display student courses and information (wip).\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <breakpoint enabled=\"true\" type=\"java-exception\">\n          <properties class=\"java.io.FileNotFoundException\" package=\"java.io\" />\n          <option name=\"timeStamp\" value=\"1\" />\n        </breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\n    <SUITE FILE_PATH=\"coverage/ENGG1420G33$MainApp.ic\" NAME=\"MainApp Coverage Results\" MODIFIED=\"1743465847175\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"true\">\n      <FILTER>com.example.phase1_1420.*</FILTER>\n    </SUITE>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 57e6c3e7dd3b78588ca9161c8c9193fb57c41ab0)
++++ b/.idea/workspace.xml	(date 1743645644383)
+@@ -4,13 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="695edb3f-5990-4e7d-9437-02fba9d60a2e" name="Changes" comment="Homepage for users (student login). display student courses and information (wip).">
++    <list default="true" id="695edb3f-5990-4e7d-9437-02fba9d60a2e" name="Changes" comment="Fixed course management module for students when the same course would be repeated for all sections.">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/CourseManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/CourseManagementController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/ExcelFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/ExcelFile.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Student.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/UserDashboardViewController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/user-dashboard-view.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/Event.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/FacultyDashboardViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/java/com/example/phase1_1420/FacultyDashboardViewController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/faculty-dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ManagementSystem/src/main/resources/com/example/phase1_1420/faculty-dashboard-view.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -87,7 +85,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1743577498116</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Fixed course management module for students when the same course would be repeated for all sections.">
++      <option name="closed" value="true" />
++      <created>1743640816014</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1743640816014</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -104,7 +110,8 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="pull" />
+     <MESSAGE value="Homepage for users (student login). display student courses and information (wip)." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Homepage for users (student login). display student courses and information (wip)." />
++    <MESSAGE value="Fixed course management module for students when the same course would be repeated for all sections." />
++    <option name="LAST_COMMIT_MESSAGE" value="Fixed course management module for students when the same course would be repeated for all sections." />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: ManagementSystem/src/main/java/com/example/phase1_1420/Event.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.phase1_1420;\n\npublic class Event {\n\n    protected String eventID;\n    protected String eventName;\n    protected String description;\n    protected String location;\n    protected String dateTime;\n    protected double capacity;\n    protected String cost;\n    protected String registeredStudents;\n\n    public Event(String eventID, String eventName, String description, String location, String dateTime, double capacity,\n                 String cost, String registeredStudents){\n        this.eventID = eventID;\n        this.eventName = eventName;\n        this.description = description;\n        this.location = location;\n        this.dateTime = dateTime;\n        this.capacity = capacity;\n        this.cost = cost;\n        this.registeredStudents = registeredStudents;\n    }\n\n    public String getEventID() {\n        return eventID;\n    }\n\n    public void setEventID(String eventID) {\n        this.eventID = eventID;\n    }\n\n    public String getEventName() {\n        return eventName;\n    }\n\n    public void setEventName(String eventName) {\n        this.eventName = eventName;\n    }\n\n    public String getDescription() {\n        return description;\n    }\n\n    public void setDescription(String description) {\n        this.description = description;\n    }\n\n    public String getLocation() {\n        return location;\n    }\n\n    public void setLocation(String location) {\n        this.location = location;\n    }\n\n    public String getDateTime() {\n        return dateTime;\n    }\n\n    public void setDateTime(String dateTime) {\n        this.dateTime = dateTime;\n    }\n\n    public double getCapacity() {\n        return capacity;\n    }\n\n    public void setCapacity(double capacity) {\n        this.capacity = capacity;\n    }\n\n    public String getCost() {\n        return cost;\n    }\n\n    public void setCost(String cost) {\n        this.cost = cost;\n    }\n\n    public String getRegisteredStudents() {\n        return registeredStudents;\n    }\n\n    public void setRegisteredStudents(String registeredStudents) {\n        this.registeredStudents = registeredStudents;\n    }\n\n    @Override\n    public String toString() {\n        return \"EventId: \" + eventID +\n                \" | Name: \" + eventName +\n                \" | Description: \" + description +\n                \" | location: \" + location +\n                \" | Date & Time: \" + dateTime +\n                \" | Capacity: \" + capacity +\n                \" | Cost: \" + cost +\n                \" | Students Registered: \" + registeredStudents;\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ManagementSystem/src/main/java/com/example/phase1_1420/Event.java b/ManagementSystem/src/main/java/com/example/phase1_1420/Event.java
+--- a/ManagementSystem/src/main/java/com/example/phase1_1420/Event.java	(revision 57e6c3e7dd3b78588ca9161c8c9193fb57c41ab0)
++++ b/ManagementSystem/src/main/java/com/example/phase1_1420/Event.java	(date 1743642016408)
+@@ -10,9 +10,10 @@
+     protected double capacity;
+     protected String cost;
+     protected String registeredStudents;
++    protected String type;
+ 
+     public Event(String eventID, String eventName, String description, String location, String dateTime, double capacity,
+-                 String cost, String registeredStudents){
++                 String cost, String registeredStudents, String type){
+         this.eventID = eventID;
+         this.eventName = eventName;
+         this.description = description;
+@@ -21,6 +22,7 @@
+         this.capacity = capacity;
+         this.cost = cost;
+         this.registeredStudents = registeredStudents;
++        this.type = type;
+     }
+ 
+     public String getEventID() {
+@@ -87,6 +89,14 @@
+         this.registeredStudents = registeredStudents;
+     }
+ 
++    public String getType() {
++        return type;
++    }
++
++    public void setType(String type) {
++        this.type = type;
++    }
++
+     @Override
+     public String toString() {
+         return "EventId: " + eventID +
+@@ -96,7 +106,8 @@
+                 " | Date & Time: " + dateTime +
+                 " | Capacity: " + capacity +
+                 " | Cost: " + cost +
+-                " | Students Registered: " + registeredStudents;
++                " | Students Registered: " + registeredStudents +
++                " | Type: " + type;
+     }
+ 
+ }

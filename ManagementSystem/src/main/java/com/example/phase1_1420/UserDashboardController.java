@@ -12,28 +12,42 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.layout.VBox;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.ArrayList;
+import java.util.List;
 
-public class UserDashboardController {
+public class UserDashboardController implements Initializable {
     @FXML private Pane sidebarPane;
     @FXML private Button toggleButton;
     @FXML private StackPane contentArea;
+    @FXML private Text studentNameText;
+    @FXML private Text studentIdText;
+    @FXML private Text academicLevelText;
+    @FXML private Text currentSemText;
+    @FXML private Text graduationDateText;
+    @FXML private TableView<Event> eventsTable;
+    @FXML private TableColumn<Event, String> eventNameColumn;
+    @FXML private TableColumn<Event, String> eventDateColumn;
+    @FXML private TableColumn<Event, String> eventLocationColumn;
     @FXML private Text UserName;
     @FXML private Text UserID;
+
     private boolean sidebarVisible = false;
     private final ExcelFile excelReader = new ExcelFile();
+    private final ObservableList<Event> registeredEvents = FXCollections.observableArrayList();
 
-    @FXML
-    private void initialize() {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         try {
             // Load data from Excel
             excelReader.ReadingNameExcelFile();
-            
-            // Get current student from UserDatabase
-            Student currentStudent = (Student) UserDatabase.CurrentUser;
-            
-            // Set user information
-            UserName.setText(currentStudent.getUsername());
-            UserID.setText(currentStudent.getId());
             
             // Initialize sidebar
             sidebarPane.setTranslateX(-200);
@@ -41,9 +55,58 @@ public class UserDashboardController {
             
             // Load initial content
             loadContent("user-dashboard-view.fxml");
+            
+            // Set up user info
+            if (UserDatabase.CurrentUser != null) {
+                UserName.setText(UserDatabase.CurrentUser.getUsername());
+                UserID.setText(UserDatabase.CurrentUser.getId());
+            }
         } catch (Exception e) {
+            System.err.println("Error in initialize: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    private void updateUserInfo() {
+        if (UserDatabase.CurrentUser != null) {
+            Student currentStudent = (Student) UserDatabase.CurrentUser;
+            studentNameText.setText(currentStudent.getUsername());
+            studentIdText.setText(currentStudent.getId());
+            academicLevelText.setText(currentStudent.getAcademicLevel());
+            currentSemText.setText(currentStudent.getCurrentSem());
+            graduationDateText.setText("Expected: " + currentStudent.getCurrentSem());
+        }
+    }
+
+    private void setupRegisteredEventsTable() {
+        eventNameColumn.setCellValueFactory(cellData -> 
+            new SimpleStringProperty(cellData.getValue().getEventName()));
+        eventDateColumn.setCellValueFactory(cellData -> 
+            new SimpleStringProperty(extractDate(cellData.getValue().getDateTime())));
+        eventLocationColumn.setCellValueFactory(cellData -> 
+            new SimpleStringProperty(cellData.getValue().getLocation()));
+    }
+
+    private void loadRegisteredEvents() {
+        registeredEvents.clear();
+        String currentUserId = UserDatabase.CurrentUser.getId();
+        
+        for (Event event : excelReader.eventList) {
+            String registeredStudents = event.getRegisteredStudents();
+            if (registeredStudents != null && registeredStudents.contains(currentUserId)) {
+                registeredEvents.add(event);
+            }
+        }
+        
+        eventsTable.setItems(registeredEvents);
+    }
+
+    private String extractDate(String dateTime) {
+        if (dateTime == null || dateTime.isEmpty()) {
+            return "TBA";
+        }
+        String[] parts = dateTime.split(" ");
+        return parts[0];
     }
 
     @FXML
@@ -72,7 +135,9 @@ public class UserDashboardController {
     private void handleSubjects() { loadContent("subject-management-view.fxml"); }
 
     @FXML
-    private void handleEvents() { loadContent("user-events-view.fxml"); }
+    private void handleEvents() {
+        loadContent("event-management-view.fxml");
+    }
 
     @FXML
     private void handleProfile() { loadContent("user-profile-view.fxml"); }
@@ -96,7 +161,7 @@ public class UserDashboardController {
 
     private void loadContent(String fxmlFile) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/phase1_1420/" + fxmlFile));
             contentArea.getChildren().clear();
             contentArea.getChildren().add(loader.load());
         } catch (IOException e) {

@@ -10,9 +10,10 @@ public class Event {
     protected double capacity;
     protected String cost;
     protected String registeredStudents;
+    protected String type;
 
     public Event(String eventID, String eventName, String description, String location, String dateTime, double capacity,
-                 String cost, String registeredStudents){
+                 String cost, String registeredStudents, String type){
         this.eventID = eventID;
         this.eventName = eventName;
         this.description = description;
@@ -21,6 +22,7 @@ public class Event {
         this.capacity = capacity;
         this.cost = cost;
         this.registeredStudents = registeredStudents;
+        this.type = type;
     }
 
     public String getEventID() {
@@ -87,16 +89,25 @@ public class Event {
         this.registeredStudents = registeredStudents;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
-        return "EventId: " + eventID +
+        return "Event ID: " + eventID +
                 " | Name: " + eventName +
                 " | Description: " + description +
-                " | location: " + location +
-                " | Date & Time: " + dateTime +
+                " | Location: " + location +
+                " | Date/Time: " + dateTime +
                 " | Capacity: " + capacity +
                 " | Cost: " + cost +
-                " | Students Registered: " + registeredStudents;
+                " | Students Registered: " + registeredStudents +
+                " | Type: " + type;
     }
 
 }
