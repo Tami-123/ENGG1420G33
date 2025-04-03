@@ -19,11 +19,11 @@
     <!-- Sidebar (Starts Open) -->
     <Pane fx:id="sidebarPane" layoutX="0" prefHeight="600" prefWidth="200" style="-fx-background-color: #ed7411;">
         <VBox fx:id="sidebar" alignment="TOP_CENTER" prefHeight="600" prefWidth="200" spacing="10">
-            <Button alignment="CENTER" onAction="#handleDashboard" text="Home" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" />
-            <Button alignment="CENTER" onAction="#handleSubjects" text="View Subjects Available" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" />
-            <Button alignment="CENTER" onAction="#handleCourses" text="View Courses" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" />
-            <Button alignment="CENTER" onAction="#handleEvents" text="View &amp; Register Events" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" />
-            <Button alignment="CENTER" onAction="#handleProfile" text="Profile Management" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" />
+            <Button alignment="CENTER" onAction="#handleDashboard" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" text="Home" />
+            <Button alignment="CENTER" onAction="#handleSubjects" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" text="View Subjects Available" />
+            <Button alignment="CENTER" onAction="#handleCourses" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" text="View Courses" />
+            <Button alignment="CENTER" onAction="#handleEvents" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" text="View &amp; Register Events" />
+            <Button alignment="CENTER" onAction="#handleProfile" style="-fx-background-color: #ffffff; -fx-text-fill: #ed7411;" text="Profile Management" />
             <Button alignment="CENTER" onAction="#handleLogout" style="-fx-background-color: #d63031; -fx-text-fill: white;" text="Logout" />
             
             <ImageView fx:id="UserImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -53,5 +53,5 @@
     </Pane>
 
     <!-- Toggle Button (Always Visible) -->
-    <Button fx:id="toggleButton" layoutX="10" layoutY="10" onAction="#toggleSidebar" text="≡" style="-fx-background-color: #ed7411; -fx-text-fill: white;" />
+    <Button fx:id="toggleButton" layoutX="10" layoutY="10" onAction="#toggleSidebar" style="-fx-background-color: #f08832; -fx-text-fill: white;" text="≡" />
 </AnchorPane>

@@ -51,7 +51,15 @@ public class LoginController {
 
     private void loadDashboard(String role) {
         try {
-            String fxmlFile = "ADMIN".equals(role) ? "admin-dashboard.fxml" : "user-dashboard.fxml";
+            String fxmlFile;
+            if( "ADMIN".equals(role)){
+                fxmlFile = "admin-dashboard.fxml";
+            }else if ("FACULTY".equals(role)){
+                fxmlFile = "faculty-dashboard.fxml";
+            }else{
+                fxmlFile = "user-dashboard.fxml";
+            }
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/phase1_1420/" + fxmlFile));
             Scene scene = new Scene(loader.load());
 

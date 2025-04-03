@@ -34,7 +34,7 @@
                <Insets top="30.0" />
             </VBox.margin>
          </ImageView>
-         <Text fx:id="UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name">
+         <Text fx:id="UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Name">
             <font>
                <Font size="14.0" />
             </font>
